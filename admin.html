@@ -42,65 +42,109 @@ background:
 linear-gradient(
 160deg,
 #ffd6ea,
-#e4d4ff,
-#c8a7ff
+#e7d5ff,
+#c6a5ff
 );
 
+
+overflow:hidden;
+
 }
+
+
+
+
 
 
 
 .card{
 
+
 width:90%;
 
-max-width:600px;
+max-width:650px;
 
-padding:40px;
+padding:45px;
 
-background:white;
 
-border-radius:40px;
+background:
 
-text-align:center;
+rgba(255,255,255,.92);
+
+
+
+border-radius:45px;
+
+
 
 box-shadow:
 
-0 25px 60px rgba(100,50,150,.25);
+0 30px 80px rgba(120,70,180,.35);
+
+
+
+text-align:center;
+
+
+position:relative;
+
+z-index:5;
+
 
 }
+
+
+
 
 
 
 h1{
 
+
 font-family:"Caveat",cursive;
+
 
 font-size:55px;
 
-color:#68408f;
+
+color:#6b3fa0;
+
 
 }
+
 
 
 
 #status{
 
-font-size:24px;
 
-color:#68408f;
+font-size:25px;
 
-line-height:1.7;
+
+color:#6b3fa0;
+
+
+line-height:1.6;
+
 
 }
 
 
 
+
+
+
 .pokemon{
 
-font-size:70px;
 
-position:fixed;
+position:absolute;
+
+
+width:160px;
+
+
+animation:float 4s infinite;
+
 
 }
 
@@ -108,51 +152,59 @@ position:fixed;
 
 .gengar{
 
+
 bottom:20px;
+
 
 left:20px;
 
+
 }
 
 
 
-.clefairy{
+.mew{
+
 
 top:20px;
 
-right:20px;
+
+right:30px;
+
+
+width:120px;
+
 
 }
 
 
 
-.details{
 
-background:#ffe8f4;
 
-padding:25px;
 
-border-radius:30px;
 
-margin-top:25px;
+@keyframes float{
+
+
+0%{
+
+transform:translateY(0);
+
+}
+
+
+
+50%{
+
+transform:translateY(-15px);
 
 }
 
 
 
-@media(max-width:600px){
+100%{
 
-
-h1{
-
-font-size:45px;
-
-}
-
-
-#status{
-
-font-size:21px;
+transform:translateY(0);
 
 }
 
@@ -167,18 +219,25 @@ font-size:21px;
 
 
 
+
+
+
+
 <body>
 
 
 
-<div class="pokemon gengar">
-👻
-</div>
+<img 
+class="pokemon gengar"
+src="IMG_2059.png">
 
 
-<div class="pokemon clefairy">
-🎀
-</div>
+
+<img 
+class="pokemon mew"
+src="IMG_2063.png">
+
+
 
 
 
@@ -188,7 +247,9 @@ font-size:21px;
 
 
 <h1>
-💜 Adventure Updates ♡
+
+🌸 Adventure Updates ♡
+
 </h1>
 
 
@@ -209,11 +270,12 @@ Waiting for adventure...
 
 
 
+
+
 <script type="module">
 
 
-import { initializeApp }
-
+import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 
@@ -229,6 +291,8 @@ onSnapshot
 }
 
 from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
 
 
 
@@ -264,20 +328,21 @@ appId: "1:305849379339:web:ded141e65eae95ec31f50e"
 
 
 
-const app =
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 
+const db = getFirestore(app);
 
-const db =
-getFirestore(app);
+
 
 
 
 
 
 const status =
+
 document.getElementById("status");
+
 
 
 
@@ -287,99 +352,95 @@ document.getElementById("status");
 
 onSnapshot(
 
-doc(
-db,
-"adventures",
-"latest"
-),
+doc(db,"adventures","latest"),
 
 (snapshot)=>{
+
 
 
 if(snapshot.exists()){
 
 
-const data =
-snapshot.data();
+
+const data = snapshot.data();
+
 
 
 
 
 status.innerHTML =
 
-
 `
 
-💗 Your little adventure is official 💗
+
+💜 HE SAID YES!! 🌸
 
 
-<div class="details">
+<br><br>
 
 
-📅 <b>Date</b>
+${data.message || ""}
 
-<br>
-
-${data.date || "No date saved"}
 
 
 <br><br>
 
 
 
-🕒 <b>Time</b>
+📅 <b>Date:</b><br>
 
-<br>
+${data.date || "Not saved"}
 
-${data.time || "No time saved"}
 
 
 <br><br>
 
 
 
-📍 <b>Location</b>
+🕒 <b>Time:</b><br>
 
-<br>
+${data.time || "Not saved"}
 
-${data.location || "No location saved"}
 
 
 <br><br>
 
 
 
-👗 <b>Dress Code</b>
+📍 <b>Location:</b><br>
 
-<br>
+${data.location || "Not saved"}
 
-${data.dressCode || "No dress code saved"}
 
 
 <br><br>
 
 
 
-🎒 <b>Bring</b>
+👗 <b>Dress Code:</b><br>
 
-<br>
+${data.dressCode || "Not saved"}
 
-${data.bring || "Nothing listed"}
 
 
 <br><br>
 
 
 
-🌸 <b>Plans</b>
+🎒 <b>Bring:</b><br>
 
-<br>
-
-${data.plans || "No plans saved"}
+${data.bring || "Not saved"}
 
 
 
-</div>
+<br><br>
+
+
+
+🌸 <b>Plans:</b><br>
+
+${data.plans || "Not saved"}
+
 
 `;
 
@@ -388,14 +449,16 @@ ${data.plans || "No plans saved"}
 }
 
 
-
 }
 
 );
 
 
 
+
+
 </script>
+
 
 
 

@@ -21,9 +21,11 @@
 
 <div class="scene">
 
+<div class="moon">
+🌙
+</div>
 
-
-<!-- POKÉMON DECORATIONS -->
+<!-- POKEMON DECORATIONS -->
 
 <img class="pokemon gengar" src="IMG_2059.png">
 
@@ -34,14 +36,6 @@
 <img class="pokemon skitty" src="IMG_2062.png">
 
 <img class="pokemon mew" src="IMG_2063.png">
-
-
-
-
-
-<div class="sparkles">
-✨ 💜 ✨ 🩷 ✨
-</div>
 
 
 
@@ -85,8 +79,7 @@ i made something special for you 💜
 
 
 
-<!-- DATE PLANNER -->
-
+<!-- PLANNER -->
 
 <section id="planner" class="screen hidden">
 
@@ -105,9 +98,11 @@ tell me everything ✨
 
 
 
+
 <label>
 📅 when are we going?
 </label>
+
 
 <input 
 type="date"
@@ -121,10 +116,10 @@ id="dateInput">
 🕒 what time?
 </label>
 
+
 <input 
 type="time"
 id="timeInput">
-
 
 
 
@@ -134,7 +129,8 @@ id="timeInput">
 📍 where are we going?
 </label>
 
-<input 
+
+<input
 type="text"
 id="locationInput"
 placeholder="our little adventure spot...">
@@ -143,10 +139,10 @@ placeholder="our little adventure spot...">
 
 
 
-
 <label>
 👗 dress code
 </label>
+
 
 <input
 type="text"
@@ -157,38 +153,30 @@ placeholder="cute, cozy, fancy...">
 
 
 
-
 <label>
 🎒 bring this
 </label>
 
+
 <input
 type="text"
 id="bringInput"
-placeholder="hoodie, blanket, snacks...">
-
-
+placeholder="hoodie, snacks, blanket...">
 
 
 
 
 
 <label>
-🌸 our plans
+🌸 plans
 </label>
 
 
 <textarea
-
 id="plansInput"
-
 rows="5"
-
-placeholder="tell me what we're doing...">
-
+placeholder="tell me our adventure...">
 </textarea>
-
-
 
 
 
@@ -216,7 +204,6 @@ placeholder="tell me what we're doing...">
 
 
 <!-- PREVIEW -->
-
 
 <section id="preview" class="screen hidden">
 
@@ -251,6 +238,7 @@ our adventure details ♡
 
 
 
+
 <button onclick="confirmAdventure()">
 
 💜 make it official
@@ -274,26 +262,51 @@ our adventure details ♡
 
 <!-- ACCEPTED -->
 
-
 <section id="acceptedPage" class="screen hidden">
 
 
-<div class="card final-card">
+<div class="card final-card pokemon-finale">
+
+
+
+<img 
+class="final-gengar"
+src="IMG_2059.png">
+
+
+
+<img 
+class="final-mew"
+src="IMG_2063.png">
+
+
+
+<img 
+class="final-clefairy"
+src="IMG_2061.png">
+
+
+
+
 
 
 <h1>
-it's official ♡
+
+✨ it's official ♡ ✨
+
 </h1>
+
+
 
 
 
 <p>
 
-🥹💜
+you unlocked a little adventure 💜
 
 <br><br>
 
-our little adventure is waiting for us
+🌸 our date is officially planned 🌸
 
 <br><br>
 
@@ -304,9 +317,21 @@ can't wait to see you ♡
 
 
 
+
+
+<div class="pokeball">
+
+🔴⚪
+
+</div>
+
+
+
+
+
 <div class="celebration">
 
-✨ 🩷 ✨ 💜 ✨
+💜 ✨ 🩷 ✨ 💜
 
 </div>
 
@@ -322,7 +347,10 @@ can't wait to see you ♡
 
 
 
+
 </div>
+
+
 
 
 
@@ -374,7 +402,7 @@ window.saveAdventure = saveAdventure;
 
 
 
-<!-- MAIN SCRIPT -->
+<!-- SCRIPT -->
 
 <script src="script.js"></script>
 
