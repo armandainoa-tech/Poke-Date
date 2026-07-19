@@ -7,11 +7,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Little Adventure ♡</title>
+<title>A Little Adventure ♡</title>
+
 
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 
+
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -21,11 +24,9 @@
 
 <div class="scene">
 
-<div class="moon">
-🌙
-</div>
 
-<!-- POKEMON DECORATIONS -->
+
+<!-- POKEMON -->
 
 <img class="pokemon gengar" src="IMG_2059.png">
 
@@ -49,24 +50,20 @@
 <div class="card intro-card">
 
 
-<img 
-class="intro-mew"
-src="IMG_2063.png">
-
-
 
 <h1>
 ✨ A wild adventure appeared... ✨
 </h1>
 
 
+
 <p>
-a special little date has been discovered 💜
+A special date has been discovered 💜
 </p>
 
 
 <p>
-with your favorite person, favorite Pokémon, and a new memory waiting ♡
+A little memory waiting for us ♡
 </p>
 
 
@@ -74,22 +71,16 @@ with your favorite person, favorite Pokémon, and a new memory waiting ♡
 
 <button onclick="startAdventure()">
 
-🎒 begin adventure
+🎒 Begin Adventure
 
 </button>
 
 
-</div>
-
-
-</section>
-
 
 </div>
 
 
 </section>
-
 
 
 
@@ -107,103 +98,82 @@ with your favorite person, favorite Pokémon, and a new memory waiting ♡
 
 
 <h1>
-let's plan our date ♡
+💜 Plan Our Adventure
 </h1>
 
 
 <p>
-tell me everything ✨
+Tell me all the details ♡
 </p>
 
 
 
 
-<label>
-📅 when are we going?
-</label>
+<input 
+id="dateInput"
+type="date">
+
+
+
+<br><br>
+
 
 
 <input 
-type="date"
-id="dateInput">
+id="timeInput"
+type="time">
 
 
 
+<br><br>
 
-
-<label>
-🕒 what time?
-</label>
-
-
-<input 
-type="time"
-id="timeInput">
-
-
-
-
-
-<label>
-📍 where are we going?
-</label>
 
 
 <input
-type="text"
 id="locationInput"
-placeholder="our little adventure spot...">
+placeholder="📍 Where are we going?">
 
 
 
+<br><br>
 
-
-<label>
-👗 dress code
-</label>
 
 
 <input
-type="text"
 id="dressInput"
-placeholder="cute, cozy, fancy...">
+placeholder="👗 Dress like...">
 
 
 
+<br><br>
 
-
-<label>
-🎒 bring this
-</label>
 
 
 <input
-type="text"
 id="bringInput"
-placeholder="hoodie, snacks, blanket...">
+placeholder="🎒 Bring...">
 
 
 
+<br><br>
 
-
-<label>
-🌸 plans
-</label>
 
 
 <textarea
 id="plansInput"
-rows="5"
-placeholder="tell me our adventure...">
+placeholder="🌸 Plans for our adventure...">
 </textarea>
 
 
 
 
+<br><br>
+
+
 
 <button onclick="previewAdventure()">
 
-✨ preview our date
+✨ Preview Adventure
 
 </button>
 
@@ -231,9 +201,8 @@ placeholder="tell me our adventure...">
 
 
 <h1>
-our adventure details ♡
+Our Little Adventure ♡
 </h1>
-
 
 
 
@@ -248,10 +217,9 @@ our adventure details ♡
 
 
 
-
 <button onclick="downloadCalendar()">
 
-📅 save to calendar
+📅 Save Calendar
 
 </button>
 
@@ -260,7 +228,7 @@ our adventure details ♡
 
 <button onclick="confirmAdventure()">
 
-💜 make it official
+💌 Accept Adventure
 
 </button>
 
@@ -284,73 +252,33 @@ our adventure details ♡
 <section id="acceptedPage" class="screen hidden">
 
 
-<div class="card final-card pokemon-finale">
-
-
-
-<img 
-class="final-gengar"
-src="IMG_2059.png">
-
-
-
-<img 
-class="final-mew"
-src="IMG_2063.png">
-
-
-
-<img 
-class="final-clefairy"
-src="IMG_2061.png">
-
-
-
+<div class="card final-card">
 
 
 
 <h1>
-
-✨ it's official ♡ ✨
-
+✨ Adventure Accepted ✨
 </h1>
-
-
 
 
 
 <p>
 
-you unlocked a little adventure 💜
-
-<br><br>
-
-🌸 our date is officially planned 🌸
-
-<br><br>
-
-can't wait to see you ♡
+Can’t wait to see you 💜
 
 </p>
 
 
 
+<img 
+class="pokemon mew"
+src="IMG_2063.png">
 
 
 
-<div class="pokeball">
+<div>
 
-🔴⚪
-
-</div>
-
-
-
-
-
-<div class="celebration">
-
-💜 ✨ 🩷 ✨ 💜
+👻 💜 🌸 ✨
 
 </div>
 
@@ -365,10 +293,7 @@ can't wait to see you ♡
 
 
 
-
-
 </div>
-
 
 
 
@@ -382,12 +307,12 @@ can't wait to see you ♡
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 
+
 <script>
 
 emailjs.init({
 
 publicKey:
-
 "j5hvrNCMFnB_AUKLb"
 
 });
@@ -400,17 +325,17 @@ publicKey:
 
 
 
+
 <!-- FIREBASE -->
 
 <script type="module">
 
-
 import { saveAdventure }
-
 from "./firebase.js";
 
 
-window.saveAdventure = saveAdventure;
+window.saveAdventure =
+saveAdventure;
 
 
 </script>
@@ -421,9 +346,8 @@ window.saveAdventure = saveAdventure;
 
 
 
-<!-- SCRIPT -->
-
 <script src="script.js"></script>
+
 
 
 
