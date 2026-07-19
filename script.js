@@ -8,9 +8,11 @@ let chosenPlans = "";
 
 
 
-// START
+
+// START PAGE
 
 window.startAdventure = function(){
+
 
     document
     .getElementById("opening")
@@ -20,6 +22,7 @@ window.startAdventure = function(){
     document
     .getElementById("planner")
     .classList.remove("hidden");
+
 
 };
 
@@ -71,7 +74,7 @@ window.previewAdventure = function(){
         !chosenPlans
     ){
 
-        alert("Please fill out everything ♡");
+        alert("Fill out all the adventure details ♡");
 
         return;
 
@@ -81,41 +84,44 @@ window.previewAdventure = function(){
 
 
 
+
+
     document
     .getElementById("previewDetails")
     .innerHTML =
 
+`
 
-    `
-    📅 <b>Date:</b><br>
-    ${chosenDate}
+📅 <b>Date:</b><br>
+${chosenDate}
 
-    <br><br>
+<br><br>
 
-    🕒 <b>Time:</b><br>
-    ${chosenTime}
+🕒 <b>Time:</b><br>
+${chosenTime}
 
-    <br><br>
+<br><br>
 
-    📍 <b>Location:</b><br>
-    ${chosenLocation}
+📍 <b>Location:</b><br>
+${chosenLocation}
 
-    <br><br>
+<br><br>
 
-    👗 <b>Dress Code:</b><br>
-    ${chosenDress}
+👗 <b>Dress Code:</b><br>
+${chosenDress}
 
-    <br><br>
+<br><br>
 
-    🎒 <b>Bring:</b><br>
-    ${chosenBring}
+🎒 <b>Bring:</b><br>
+${chosenBring}
 
-    <br><br>
+<br><br>
 
-    🌸 <b>Plans:</b><br>
-    ${chosenPlans}
+🌸 <b>Plans:</b><br>
+${chosenPlans}
 
-    `;
+`;
+
 
 
 
@@ -124,6 +130,7 @@ window.previewAdventure = function(){
     document
     .getElementById("planner")
     .classList.add("hidden");
+
 
 
     document
@@ -143,82 +150,86 @@ window.previewAdventure = function(){
 
 
 
-// CONFIRM + EMAIL
+
+// CONFIRM ADVENTURE
 
 window.confirmAdventure = function(){
 
 
 
-    const adventureData = {
+const adventureData = {
 
 
-        message:
+    message:
 
-        "Your little adventure was accepted ♡",
-
-
-
-        date:
-
-        chosenDate,
+    "Your little adventure was accepted ♡",
 
 
 
-        time:
+    date:
 
-        chosenTime,
-
-
-
-        location:
-
-        chosenLocation,
+    chosenDate,
 
 
 
-        dressCode:
+    time:
 
-        chosenDress,
-
-
-
-        bring:
-
-        chosenBring,
+    chosenTime,
 
 
 
-        plans:
+    location:
 
-        chosenPlans
-
-
-    };
+    chosenLocation,
 
 
 
+    dressCode:
+
+    chosenDress,
 
 
-    console.log(
-        "Adventure data:",
+
+    bring:
+
+    chosenBring,
+
+
+
+    plans:
+
+    chosenPlans
+
+};
+
+
+
+
+
+
+
+console.log(
+"Adventure Data:",
+adventureData
+);
+
+
+
+
+
+
+
+// SAVE FIREBASE
+
+if(window.saveAdventure){
+
+
+    window.saveAdventure(
         adventureData
     );
 
 
-
-
-
-
-
-    // FIREBASE
-
-    if(window.saveAdventure){
-
-
-        window.saveAdventure(adventureData);
-
-
-    }
+}
 
 
 
@@ -226,43 +237,40 @@ window.confirmAdventure = function(){
 
 
 
-    // EMAILJS
+// SEND EMAIL
 
-    emailjs.send(
+emailjs.send(
 
-        "service_msyya77",
+    "service_msyya77",
 
-        "template_z217jfy",
+    "template_z217jfy",
 
-        adventureData
+    adventureData
 
-    )
+)
 
-
-
-    .then(function(response){
+.then(function(response){
 
 
-        console.log(
-            "EMAIL SENT:",
-            response
-        );
+    console.log(
+        "EMAIL SENT 💌",
+        response
+    );
 
 
-    })
+})
 
 
-
-    .catch(function(error){
-
-
-        console.error(
-            "EMAIL ERROR:",
-            error
-        );
+.catch(function(error){
 
 
-    });
+    console.error(
+        "EMAIL FAILED",
+        error
+    );
+
+
+});
 
 
 
@@ -271,15 +279,15 @@ window.confirmAdventure = function(){
 
 
 
-    document
-    .getElementById("preview")
-    .classList.add("hidden");
+document
+.getElementById("preview")
+.classList.add("hidden");
 
 
 
-    document
-    .getElementById("acceptedPage")
-    .classList.remove("hidden");
+document
+.getElementById("acceptedPage")
+.classList.remove("hidden");
 
 
 
@@ -300,71 +308,79 @@ window.confirmAdventure = function(){
 window.downloadCalendar = function(){
 
 
-    if(!chosenDate || !chosenTime){
 
-        alert(
-        "Choose date and time first ♡"
-        );
-
-        return;
-
-    }
+if(!chosenDate || !chosenTime){
 
 
+alert(
+"Choose date and time first ♡"
+);
 
 
-
-    const start =
-    new Date(
-        chosenDate +
-        "T" +
-        chosenTime
-    );
+return;
 
 
-
-    const end =
-    new Date(start);
-
-
-
-    end.setHours(
-        end.getHours()+1
-    );
+}
 
 
 
 
 
 
-    function formatDate(date){
+const start = new Date(
 
-        return date
-        .toISOString()
-        .replace(/[-:]/g,"")
-        .split(".")[0]+"Z";
+chosenDate +
+"T" +
+chosenTime
 
-    }
-
+);
 
 
 
 
+const end = new Date(start);
 
-    const calendar =
 
+end.setHours(
+end.getHours()+1
+);
+
+
+
+
+
+
+
+function formatDate(date){
+
+
+return date
+.toISOString()
+.replace(/[-:]/g,"")
+.split(".")[0]+"Z";
+
+
+}
+
+
+
+
+
+
+
+const ics =
 
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Our Little Adventure//EN
 BEGIN:VEVENT
-UID:${Date.now()}@adventure
+UID:${Date.now()}@datesite
 DTSTAMP:${formatDate(new Date())}
 DTSTART:${formatDate(start)}
 DTEND:${formatDate(end)}
 SUMMARY:Our Little Adventure ♡
-DESCRIPTION:${chosenPlans}
 LOCATION:${chosenLocation}
+DESCRIPTION:${chosenPlans}
 END:VEVENT
 END:VCALENDAR`;
 
@@ -374,48 +390,51 @@ END:VCALENDAR`;
 
 
 
-    const blob =
+const blob = new Blob(
 
-    new Blob(
+[ics],
 
-        [calendar],
+{
+type:"text/calendar"
+}
 
-        {
-            type:
-            "text/calendar"
-        }
-
-    );
+);
 
 
 
 
 
 
-    const url =
-    URL.createObjectURL(blob);
+const url =
+URL.createObjectURL(blob);
 
 
 
 
-    const link =
-    document.createElement("a");
+const link =
+document.createElement("a");
 
 
 
-    link.href=url;
+link.href=url;
 
 
-    link.download=
-    "Our-Little-Adventure.ics";
-
-
-
-    link.click();
+link.download =
+"Our-Little-Adventure.ics";
 
 
 
-    URL.revokeObjectURL(url);
+document.body.appendChild(link);
+
+
+link.click();
+
+
+document.body.removeChild(link);
+
+
+
+URL.revokeObjectURL(url);
 
 
 
@@ -428,5 +447,5 @@ END:VCALENDAR`;
 
 
 console.log(
-"Date Site v2 running 💜"
+"Date Site Pokémon Edition 💜"
 );
