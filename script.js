@@ -7,12 +7,9 @@ let chosenPlans = "";
 
 
 
-
-
-// START PAGE
+// START ADVENTURE
 
 window.startAdventure = function(){
-
 
     document
     .getElementById("opening")
@@ -23,7 +20,6 @@ window.startAdventure = function(){
     .getElementById("planner")
     .classList.remove("hidden");
 
-
 };
 
 
@@ -32,8 +28,7 @@ window.startAdventure = function(){
 
 
 
-
-// PREVIEW
+// PREVIEW ADVENTURE
 
 window.previewAdventure = function(){
 
@@ -68,59 +63,14 @@ window.previewAdventure = function(){
     if(
         !chosenDate ||
         !chosenTime ||
-        !chosenLocation ||
-        !chosenDress ||
-        !chosenBring ||
-        !chosenPlans
+        !chosenLocation
     ){
 
-        alert("Fill out all the adventure details ♡");
+        alert("Fill out the date, time, and location ♡");
 
         return;
 
     }
-
-
-
-
-
-
-
-    document
-    .getElementById("previewDetails")
-    .innerHTML =
-
-`
-
-📅 <b>Date:</b><br>
-${chosenDate}
-
-<br><br>
-
-🕒 <b>Time:</b><br>
-${chosenTime}
-
-<br><br>
-
-📍 <b>Location:</b><br>
-${chosenLocation}
-
-<br><br>
-
-👗 <b>Dress Code:</b><br>
-${chosenDress}
-
-<br><br>
-
-🎒 <b>Bring:</b><br>
-${chosenBring}
-
-<br><br>
-
-🌸 <b>Plans:</b><br>
-${chosenPlans}
-
-`;
 
 
 
@@ -138,161 +88,57 @@ ${chosenPlans}
     .classList.remove("hidden");
 
 
-};
 
 
 
 
+    document
+    .getElementById("previewDetails")
+    .innerHTML = `
 
 
+📅 <b>Date:</b><br>
+${chosenDate}
 
 
+<br><br>
 
 
+🕒 <b>Time:</b><br>
+${chosenTime}
 
 
-// CONFIRM ADVENTURE
-
-window.confirmAdventure = function(){
+<br><br>
 
 
-
-const adventureData = {
-
-
-    message:
-
-    "Your little adventure was accepted ♡",
+📍 <b>Location:</b><br>
+${chosenLocation}
 
 
-
-    date:
-
-    chosenDate,
+<br><br>
 
 
-
-    time:
-
-    chosenTime,
+👗 <b>Dress:</b><br>
+${chosenDress || "Anything cute ♡"}
 
 
-
-    location:
-
-    chosenLocation,
+<br><br>
 
 
-
-    dressCode:
-
-    chosenDress,
+🎒 <b>Bring:</b><br>
+${chosenBring || "Just yourself 💜"}
 
 
-
-    bring:
-
-    chosenBring,
+<br><br>
 
 
+🌸 <b>Plans:</b><br>
+${chosenPlans || "A surprise adventure ✨"}
 
-    plans:
 
-    chosenPlans
+`;
 
 };
-
-
-
-
-
-
-
-console.log(
-"Adventure Data:",
-adventureData
-);
-
-
-
-
-
-
-
-// SAVE FIREBASE
-
-if(window.saveAdventure){
-
-
-    window.saveAdventure(
-        adventureData
-    );
-
-
-}
-
-
-
-
-
-
-
-// SEND EMAIL
-
-emailjs.send(
-
-    "service_msyya77",
-
-    "template_z217jfy",
-
-    adventureData
-
-)
-
-.then(function(response){
-
-
-    console.log(
-        "EMAIL SENT 💌",
-        response
-    );
-
-
-})
-
-
-.catch(function(error){
-
-
-    console.error(
-        "EMAIL FAILED",
-        error
-    );
-
-
-});
-
-
-
-
-
-
-
-
-document
-.getElementById("preview")
-.classList.add("hidden");
-
-
-
-document
-.getElementById("acceptedPage")
-.classList.remove("hidden");
-
-
-
-};
-
 
 
 
@@ -307,24 +153,37 @@ document
 
 window.downloadCalendar = function(){
 
+
     if(!chosenDate || !chosenTime){
 
-        alert("Choose date and time first ♡");
+        alert("Choose a date and time first ♡");
+
         return;
 
     }
 
 
-    const start = new Date(
-        chosenDate + "T" + chosenTime
+
+    const start =
+    new Date(
+        chosenDate +
+        "T" +
+        chosenTime
     );
 
 
-    const end = new Date(start);
+
+    const end =
+    new Date(start);
+
+
 
     end.setHours(
-        end.getHours() + 1
+        end.getHours()+1
     );
+
+
+
 
 
     function formatDate(date){
@@ -332,16 +191,17 @@ window.downloadCalendar = function(){
         return date
         .toISOString()
         .replace(/[-:]/g,"")
-        .split(".")[0] + "Z";
+        .split(".")[0]
+        +"Z";
 
     }
 
 
 
-    const calendarURL =
-    "data:text/calendar;charset=utf8," +
 
-    encodeURIComponent(
+
+
+    const calendar =
 
 `BEGIN:VCALENDAR
 VERSION:2.0
@@ -352,13 +212,54 @@ DTEND:${formatDate(end)}
 LOCATION:${chosenLocation}
 DESCRIPTION:${chosenPlans}
 END:VEVENT
-END:VCALENDAR`
+END:VCALENDAR`;
 
+
+
+
+
+
+    const blob =
+    new Blob(
+        [calendar],
+        {
+            type:
+            "text/calendar"
+        }
     );
 
 
 
-    window.open(calendarURL);
+
+
+    const url =
+    URL.createObjectURL(blob);
+
+
+
+
+
+    const link =
+    document.createElement("a");
+
+
+
+    link.href=url;
+
+
+    link.download =
+    "Our-Little-Adventure.ics";
+
+
+
+    document.body.appendChild(link);
+
+
+    link.click();
+
+
+    document.body.removeChild(link);
+
 
 };
 
@@ -367,36 +268,150 @@ END:VCALENDAR`
 
 
 
-const url =
-URL.createObjectURL(blob);
 
 
 
 
-const link =
-document.createElement("a");
+
+
+// CONFIRM ADVENTURE + EMAIL
+
+window.confirmAdventure = function(){
 
 
 
-link.href=url;
+    const adventureData = {
 
 
-link.download =
-"Our-Little-Adventure.ics";
+        message:
+        "Your little adventure was accepted ♡",
+
+
+        date:
+        chosenDate,
+
+
+        time:
+        chosenTime,
+
+
+        location:
+        chosenLocation,
+
+
+        dressCode:
+        chosenDress,
+
+
+        bring:
+        chosenBring,
+
+
+        plans:
+        chosenPlans
+
+
+    };
 
 
 
-document.body.appendChild(link);
-
-
-link.click();
-
-
-document.body.removeChild(link);
 
 
 
-URL.revokeObjectURL(url);
+    console.log(
+        "Adventure data:",
+        adventureData
+    );
+
+
+
+
+
+
+
+    // FIREBASE
+
+
+    if(window.saveAdventure){
+
+
+        window.saveAdventure(
+            adventureData
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    // EMAILJS
+
+
+    emailjs.send(
+
+        "service_msyya77",
+
+        "template_z217jfy",
+
+        adventureData
+
+    )
+
+
+
+    .then(function(response){
+
+
+        console.log(
+            "EMAIL SENT:",
+            response
+        );
+
+
+
+        alert(
+            "Adventure confirmed 💜✨"
+        );
+
+
+    })
+
+
+
+    .catch(function(error){
+
+
+        console.error(
+            "EMAIL FAILED:",
+            error
+        );
+
+
+    });
+
+
+
+
+
+
+
+
+
+    document
+    .getElementById("preview")
+    .classList.add("hidden");
+
+
+
+    document
+    .getElementById("acceptedPage")
+    .classList.remove("hidden");
 
 
 
@@ -409,5 +424,5 @@ URL.revokeObjectURL(url);
 
 
 console.log(
-"Date Site Pokémon Edition 💜"
+"Date Site Pokémon Adventure running 💜"
 );

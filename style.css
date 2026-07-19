@@ -752,3 +752,302 @@ button{
     }
 
 }
+
+
+/* =========================
+   DEVICE RESPONSIVE DESIGN
+   ========================= */
+
+
+/* DESKTOP + LARGE SCREENS */
+
+@media (min-width: 1000px){
+
+    .card{
+
+        max-width:750px;
+
+        padding:55px;
+
+    }
+
+
+    h1{
+
+        font-size:65px;
+
+    }
+
+
+    p{
+
+        font-size:30px;
+
+    }
+
+
+    .pokemon{
+
+        width:190px;
+
+    }
+
+
+    .mew{
+
+        width:130px;
+
+    }
+
+
+}
+
+
+
+
+/* TABLET */
+
+@media (min-width:700px) and (max-width:999px){
+
+
+    .card{
+
+        max-width:650px;
+
+        padding:40px;
+
+    }
+
+
+    .pokemon{
+
+        width:130px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* IPHONE / SMALL SCREENS */
+
+@media (max-width:699px){
+
+
+    body{
+
+        overflow-y:auto;
+
+        min-height:100vh;
+
+        align-items:flex-start;
+
+        padding-top:40px;
+
+    }
+
+
+
+    .scene{
+
+        min-height:100vh;
+
+        height:auto;
+
+    }
+
+
+
+
+
+    .card{
+
+
+        width:90%;
+
+
+        padding:25px;
+
+
+        border-radius:30px;
+
+
+    }
+
+
+
+
+
+
+    h1{
+
+        font-size:38px;
+
+        line-height:1.1;
+
+    }
+
+
+
+    h2{
+
+        font-size:28px;
+
+    }
+
+
+
+
+    p{
+
+        font-size:19px;
+
+        line-height:1.4;
+
+    }
+
+
+
+
+
+    button{
+
+        width:100%;
+
+        font-size:20px;
+
+        padding:12px;
+
+    }
+
+
+
+
+
+
+    input,
+    textarea{
+
+
+        font-size:18px;
+
+
+        padding:12px;
+
+
+    }
+
+
+
+
+
+
+
+    /* SMALL POKEMON */
+
+    .pokemon{
+
+
+        width:65px;
+
+
+    }
+
+
+
+
+    .gengar{
+
+        left:-5px;
+
+        bottom:10px;
+
+    }
+
+
+
+
+    .espeon{
+
+        right:-5px;
+
+        bottom:40px;
+
+    }
+
+
+
+
+
+    .clefairy{
+
+        right:0;
+
+        top:10px;
+
+    }
+
+
+
+
+    .skitty{
+
+        left:0;
+
+        top:20px;
+
+    }
+
+
+
+
+    .mew{
+
+        width:50px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* EXTRA SMALL IPHONES */
+
+@media (max-width:390px){
+
+
+    .pokemon{
+
+        width:50px;
+
+    }
+
+
+
+    .card{
+
+        padding:20px;
+
+    }
+
+
+
+    h1{
+
+        font-size:32px;
+
+    }
+
+
+
+}
