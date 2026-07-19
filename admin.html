@@ -11,69 +11,102 @@
 <title>Adventure Updates ♡</title>
 
 
+
 <style>
+
 
 body{
 
-font-family:Arial,sans-serif;
+    margin:0;
 
-text-align:center;
+    min-height:100vh;
 
-padding:40px;
+    display:flex;
 
-background:
-linear-gradient(
-135deg,
-#ffd6ed,
-#d9c8ff
-);
+    justify-content:center;
+
+    align-items:center;
+
+
+    font-family:Arial,sans-serif;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #ffd6ed,
+        #d9c8ff
+    );
+
 
 }
+
 
 
 .card{
 
-background:white;
 
-padding:35px;
+    width:90%;
 
-border-radius:30px;
+    max-width:600px;
 
-max-width:600px;
 
-margin:auto;
+    background:white;
 
-box-shadow:
-0 10px 30px rgba(0,0,0,.15);
+
+    padding:35px;
+
+
+    border-radius:30px;
+
+
+    text-align:center;
+
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.15);
+
 
 }
+
 
 
 h1{
 
-color:#a05cff;
+
+    color:#a05cff;
+
 
 }
+
 
 
 #status{
 
-font-size:20px;
 
-line-height:1.8;
+    font-size:20px;
 
-color:#5b4268;
+
+    line-height:1.8;
+
+
+    color:#5c4268;
+
+
+}
+
+
+
+.pokemon{
+
+
+    width:120px;
+
 
 }
 
-
-img{
-
-width:100px;
-
-margin:10px;
-
-}
 
 
 </style>
@@ -83,18 +116,26 @@ margin:10px;
 
 
 
+
 <body>
+
 
 
 <div class="card">
 
 
+
+<img class="pokemon" src="IMG_2059.png">
+
+
+
 <h1>
+
 💜 Adventure Updates ♡
+
 </h1>
 
 
-<img src="IMG_2059.png">
 
 
 <div id="status">
@@ -104,7 +145,9 @@ Waiting for adventure...
 </div>
 
 
+
 </div>
+
 
 
 
@@ -131,6 +174,8 @@ onSnapshot
 }
 
 from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
 
 
 
@@ -171,12 +216,15 @@ appId:
 
 
 
+
 const app =
+
 initializeApp(firebaseConfig);
 
 
 
 const db =
+
 getFirestore(app);
 
 
@@ -185,6 +233,7 @@ getFirestore(app);
 
 
 const status =
+
 document.getElementById("status");
 
 
@@ -195,11 +244,18 @@ document.getElementById("status");
 
 onSnapshot(
 
+
 doc(
+
 db,
+
 "adventures",
+
 "latest"
+
 ),
+
+
 
 
 (snapshot)=>{
@@ -209,7 +265,9 @@ db,
 if(snapshot.exists()){
 
 
+
 const data =
+
 snapshot.data();
 
 
@@ -220,7 +278,7 @@ status.innerHTML = `
 
 
 
-💗 <b>${data.message || "Adventure Accepted ♡"}</b>
+💗 <b>${data.message}</b>
 
 
 
@@ -228,19 +286,9 @@ status.innerHTML = `
 
 
 
-📅 <b>Date:</b><br>
+📅 <b>Date</b><br>
 
-${data.date || "Not chosen"}
-
-
-
-<br><br>
-
-
-
-⏰ <b>Time:</b><br>
-
-${data.time || "Not chosen"}
+${data.date}
 
 
 
@@ -248,19 +296,9 @@ ${data.time || "Not chosen"}
 
 
 
-📍 <b>Location:</b><br>
+⏰ <b>Time</b><br>
 
-${data.location || "Not chosen"}
-
-
-
-<br><br>
-
-
-
-👗 <b>Dress:</b><br>
-
-${data.dressCode || "Cute outfit ♡"}
+${data.time}
 
 
 
@@ -268,9 +306,9 @@ ${data.dressCode || "Cute outfit ♡"}
 
 
 
-🎒 <b>Bring:</b><br>
+📍 <b>Location</b><br>
 
-${data.bring || "Just yourself 💜"}
+${data.location}
 
 
 
@@ -278,9 +316,29 @@ ${data.bring || "Just yourself 💜"}
 
 
 
-🌸 <b>Plans:</b><br>
+👗 <b>Dress</b><br>
 
-${data.plans || "Adventure waiting..."}
+${data.dressCode}
+
+
+
+<br><br>
+
+
+
+🎒 <b>Bring</b><br>
+
+${data.bring}
+
+
+
+<br><br>
+
+
+
+🌸 <b>Plans</b><br>
+
+${data.plans}
 
 
 
@@ -294,10 +352,15 @@ ${data.plans || "Adventure waiting..."}
 
 }
 
+
+
 );
 
 
+
 </script>
+
+
 
 
 

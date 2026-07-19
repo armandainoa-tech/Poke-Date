@@ -12,6 +12,7 @@ let chosenPlans = "";
 
 window.startAdventure = function(){
 
+
     const opening =
     document.getElementById("opening");
 
@@ -20,15 +21,21 @@ window.startAdventure = function(){
     document.getElementById("planner");
 
 
+
     if(opening && planner){
+
 
         opening.classList.add("hidden");
 
+
         planner.classList.remove("hidden");
+
 
     }
 
+
 };
+
 
 
 
@@ -42,28 +49,35 @@ window.startAdventure = function(){
 window.previewAdventure = function(){
 
 
+
     chosenDate =
     document.getElementById("dateInput").value;
+
 
 
     chosenTime =
     document.getElementById("timeInput").value;
 
 
+
     chosenLocation =
     document.getElementById("locationInput").value;
+
 
 
     chosenDress =
     document.getElementById("dressInput").value;
 
 
+
     chosenBring =
     document.getElementById("bringInput").value;
 
 
+
     chosenPlans =
     document.getElementById("plansInput").value;
+
 
 
 
@@ -75,14 +89,16 @@ window.previewAdventure = function(){
         !chosenLocation
     ){
 
+
         alert(
-        "Please add your date, time, and location ♡"
+        "Please choose your date, time, and location ♡"
         );
+
 
         return;
 
-    }
 
+    }
 
 
 
@@ -105,13 +121,14 @@ window.previewAdventure = function(){
 
 
 
-
     document
     .getElementById("previewDetails")
     .innerHTML = `
 
 
-📅 <b>Adventure Date</b><br>
+
+📅 <b>Date</b><br>
+
 ${chosenDate}
 
 
@@ -119,6 +136,7 @@ ${chosenDate}
 
 
 ⏰ <b>Time</b><br>
+
 ${chosenTime}
 
 
@@ -126,30 +144,40 @@ ${chosenTime}
 
 
 📍 <b>Location</b><br>
+
 ${chosenLocation}
 
 
 <br><br>
 
 
-👗 <b>Trainer Outfit</b><br>
-${chosenDress || "Something cute ♡"}
+👗 <b>Dress Like</b><br>
+
+${chosenDress || "Cute and comfy ♡"}
+
 
 
 <br><br>
 
 
-🎒 <b>Inventory</b><br>
+🎒 <b>Bring</b><br>
+
 ${chosenBring || "Just yourself 💜"}
 
 
+
 <br><br>
 
 
-🌸 <b>Quest</b><br>
+🌸 <b>Plans</b><br>
+
 ${chosenPlans || "A surprise adventure ✨"}
 
+
+
 `;
+
+
 
 };
 
@@ -167,17 +195,28 @@ ${chosenPlans || "A surprise adventure ✨"}
 window.downloadCalendar = function(){
 
 
+
     const start =
+
     new Date(
+
         chosenDate +
+
         "T" +
+
         chosenTime
+
     );
 
 
 
+
+
+
     const end =
+
     new Date(start);
+
 
 
     end.setHours(
@@ -188,15 +227,23 @@ window.downloadCalendar = function(){
 
 
 
+
     function formatDate(date){
 
+
         return date
+
         .toISOString()
+
         .replace(/[-:]/g,"")
+
         .split(".")[0]
+
         +"Z";
 
+
     }
+
 
 
 
@@ -209,7 +256,7 @@ window.downloadCalendar = function(){
 `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
-SUMMARY:💜 Our Little Adventure
+SUMMARY:💜 Our Little Adventure ♡
 DTSTART:${formatDate(start)}
 DTEND:${formatDate(end)}
 LOCATION:${chosenLocation}
@@ -227,41 +274,63 @@ END:VCALENDAR`;
 
 
     const blob =
+
     new Blob(
+
         [calendar],
+
         {
-            type:
-            "text/calendar;charset=utf-8"
+
+        type:"text/calendar;charset=utf-8"
+
         }
+
     );
 
 
 
+
+
     const url =
+
     URL.createObjectURL(blob);
 
 
 
+
+
+
     const link =
+
     document.createElement("a");
+
 
 
 
     link.href=url;
 
 
-    link.download =
+
+    link.download=
+
     "Our-Little-Adventure.ics";
+
+
 
 
 
     document.body.appendChild(link);
 
 
+
     link.click();
 
 
+
     document.body.removeChild(link);
+
+
+
 
 
 };
@@ -274,56 +343,81 @@ END:VCALENDAR`;
 
 
 
-// CONFIRM ADVENTURE
+// ACCEPT ADVENTURE
 
 
 window.confirmAdventure = function(){
 
 
 
-const adventureData = {
 
 
-    message:
-    "Your little adventure was accepted ♡",
+    const adventureData = {
 
 
-    date:
-    chosenDate,
+        message:
 
-
-    time:
-    chosenTime,
-
-
-    location:
-    chosenLocation,
-
-
-    dressCode:
-    chosenDress,
-
-
-    bring:
-    chosenBring,
-
-
-    plans:
-    chosenPlans
-
-
-};
+        "Your little adventure was accepted ♡",
 
 
 
+        date:
+
+        chosenDate,
+
+
+
+        time:
+
+        chosenTime,
+
+
+
+        location:
+
+        chosenLocation,
+
+
+
+        dressCode:
+
+        chosenDress,
+
+
+
+        bring:
+
+        chosenBring,
+
+
+
+        plans:
+
+        chosenPlans
+
+
+
+    };
 
 
 
 
-console.log(
-"Adventure Data:",
-adventureData
-);
+
+
+
+
+    // FIREBASE
+
+
+    if(window.saveAdventure){
+
+
+        window.saveAdventure(
+            adventureData
+        );
+
+
+    }
 
 
 
@@ -331,56 +425,41 @@ adventureData
 
 
 
-// FIREBASE SAVE
+
+    // EMAILJS
 
 
-if(window.saveAdventure){
+    emailjs.send(
 
-    window.saveAdventure(
+        "service_msyya77",
+
+        "template_z217jfy",
+
         adventureData
-    );
 
-}
+    )
 
-
-
+    .then(()=>{
 
 
+        console.log(
+        "Email sent 💜"
+        );
 
 
-
-// EMAILJS
-
-
-emailjs.send(
-
-"service_msyya77",
-
-"template_z217jfy",
-
-adventureData
-
-)
-
-.then(function(response){
-
-console.log(
-"EMAIL SENT 💜",
-response
-);
+    })
 
 
-})
-
-.catch(function(error){
-
-console.error(
-"EMAIL FAILED",
-error
-);
+    .catch((error)=>{
 
 
-});
+        console.error(
+        "Email failed",
+        error
+        );
+
+
+    });
 
 
 
@@ -389,15 +468,17 @@ error
 
 
 
-document
-.getElementById("preview")
-.classList.add("hidden");
+    document
+    .getElementById("preview")
+    .classList.add("hidden");
 
 
 
-document
-.getElementById("acceptedPage")
-.classList.remove("hidden");
+    document
+    .getElementById("acceptedPage")
+    .classList.remove("hidden");
+
+
 
 
 
@@ -407,6 +488,9 @@ document
 
 
 
+
+
+
 console.log(
-"Pokémon Date Site loaded 💜"
+"Pokémon Date Site Loaded 💜"
 );

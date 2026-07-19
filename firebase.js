@@ -1,6 +1,7 @@
-// FIREBASE SETUP
+// FIREBASE IMPORTS
 
-import { initializeApp } 
+import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 
@@ -20,6 +21,9 @@ from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
 
+
+
+// FIREBASE CONFIG
 
 
 const firebaseConfig = {
@@ -57,12 +61,18 @@ appId:
 
 
 
+
+// INITIALIZE
+
+
 const app =
+
 initializeApp(firebaseConfig);
 
 
 
 const db =
+
 getFirestore(app);
 
 
@@ -72,21 +82,30 @@ getFirestore(app);
 
 
 
+
+// SAVE ADVENTURE
+
+
 export async function saveAdventure(details){
 
 
-try{
 
+try{
 
 
 await setDoc(
 
 
 doc(
+
 db,
+
 "adventures",
+
 "latest"
+
 ),
+
 
 
 
@@ -106,12 +125,11 @@ details.message ||
 
 
 
-
 date:
 
 details.date ||
 
-"No date saved",
+"No date chosen",
 
 
 
@@ -121,7 +139,7 @@ time:
 
 details.time ||
 
-"No time saved",
+"No time chosen",
 
 
 
@@ -131,7 +149,7 @@ location:
 
 details.location ||
 
-"No location saved",
+"No location chosen",
 
 
 
@@ -161,7 +179,7 @@ plans:
 
 details.plans ||
 
-"No plans saved",
+"No plans added",
 
 
 
@@ -170,6 +188,7 @@ details.plans ||
 updated:
 
 new Date().toISOString()
+
 
 
 }
@@ -183,7 +202,7 @@ new Date().toISOString()
 
 
 console.log(
-"Adventure saved 💜"
+"Adventure saved to Firebase 💜"
 );
 
 
@@ -191,16 +210,20 @@ console.log(
 
 }
 
+
+
 catch(error){
+
 
 
 console.error(
 
-"Firebase save failed:",
+"Firebase save error:",
 
 error
 
 );
+
 
 
 }

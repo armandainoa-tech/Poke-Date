@@ -15,6 +15,7 @@
 
 <link rel="stylesheet" href="style.css">
 
+
 </head>
 
 
@@ -25,14 +26,381 @@
 
 
 
-<!-- POKEMON DECORATIONS -->
+<!-- POKEMON BACKGROUND -->
 
-<img class="pokemon gengar" src="IMG_2059.png">
+<img class="pokemon gengar" src="IMG_2059.png" alt="Gengar">
 
-<img class="pokemon espeon" src="IMG_2060.png">
+<img class="pokemon espeon" src="IMG_2060.png" alt="Espeon">
 
-<img class="pokemon clefairy" src="IMG_2061.png">
+<img class="pokemon clefairy" src="IMG_2061.png" alt="Clefairy">
 
-<img class="pokemon skitty" src="IMG_2062.png">
+<img class="pokemon skitty" src="IMG_2062.png" alt="Skitty">
 
-<img class="pokemon me
+<img class="pokemon mew" src="IMG_2063.png" alt="Mew">
+
+
+
+
+
+<!-- OPENING PAGE -->
+
+<section id="opening" class="screen">
+
+
+<div class="card intro-card">
+
+
+<h1>
+✨ A wild adventure appeared... ✨
+</h1>
+
+
+
+<p>
+A special date quest has been discovered 💜
+</p>
+
+
+
+<p>
+A little memory waiting for us ♡
+</p>
+
+
+
+<button onclick="startAdventure()">
+
+🎒 Begin Adventure
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- PLANNER PAGE -->
+
+
+<section id="planner" class="screen hidden">
+
+
+<div class="card">
+
+
+<h1>
+💜 Adventure Planner
+</h1>
+
+
+
+<p>
+Create our little quest ♡
+</p>
+
+
+
+
+<label>
+📅 Adventure Date
+</label>
+
+<br>
+
+<input id="dateInput" type="date">
+
+
+
+<br><br>
+
+
+
+
+<label>
+⏰ Adventure Time
+</label>
+
+<br>
+
+<input id="timeInput" type="time">
+
+
+
+<br><br>
+
+
+
+
+<label>
+📍 Destination
+</label>
+
+<br>
+
+<input 
+id="locationInput"
+placeholder="Where are we going?">
+
+
+
+
+<br><br>
+
+
+
+
+<label>
+👗 Trainer Outfit
+</label>
+
+<br>
+
+<input
+id="dressInput"
+placeholder="Dress like...">
+
+
+
+
+<br><br>
+
+
+
+
+<label>
+🎒 Inventory
+</label>
+
+<br>
+
+<input
+id="bringInput"
+placeholder="Bring...">
+
+
+
+
+<br><br>
+
+
+
+
+<label>
+🌸 Adventure Plans
+</label>
+
+<br>
+
+<textarea
+id="plansInput"
+placeholder="What are we doing?">
+</textarea>
+
+
+
+
+
+<br><br>
+
+
+
+
+<button onclick="previewAdventure()">
+
+✨ Reveal Adventure
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PREVIEW -->
+
+
+<section id="preview" class="screen hidden">
+
+
+<div class="card">
+
+
+<h1>
+💜 Our Adventure ♡
+</h1>
+
+
+
+<div class="invitation-paper">
+
+
+<p id="previewDetails"></p>
+
+
+
+</div>
+
+
+
+
+
+<button onclick="downloadCalendar()">
+
+📅 Save Calendar
+
+</button>
+
+
+
+
+<button onclick="confirmAdventure()">
+
+💌 Accept Adventure
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ACCEPTED -->
+
+
+<section id="acceptedPage" class="screen hidden">
+
+
+<div class="card">
+
+
+<h1>
+✨ Adventure Accepted ✨
+</h1>
+
+
+<p>
+Can’t wait to see you 💜
+</p>
+
+
+
+<p>
+👻 Gengar approves this quest
+</p>
+
+
+
+
+<div class="pokemon-ending">
+
+💜 👻 🌸 ✨
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- EMAILJS -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+
+<script>
+
+emailjs.init({
+
+publicKey:
+
+"j5hvrNCMFnB_AUKLb"
+
+});
+
+</script>
+
+
+
+
+
+
+
+<!-- FIREBASE -->
+
+
+<script type="module">
+
+import { saveAdventure }
+
+from "./firebase.js";
+
+
+window.saveAdventure = saveAdventure;
+
+
+
+</script>
+
+
+
+
+
+
+<!-- MAIN SCRIPT -->
+
+
+<script src="script.js"></script>
+
+
+
+
+</body>
+
+</html>
