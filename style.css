@@ -38,7 +38,6 @@ body{
 
 
 
-
 .scene{
 
     width:100%;
@@ -54,7 +53,6 @@ body{
     align-items:center;
 
 }
-
 
 
 
@@ -82,8 +80,6 @@ body{
 
 
 
-
-
 .card{
 
 
@@ -98,7 +94,6 @@ body{
 
     background:
 
-
     rgba(255,255,255,.92);
 
 
@@ -108,7 +103,6 @@ body{
 
 
     box-shadow:
-
 
     0 30px 80px rgba(120,70,180,.35);
 
@@ -131,16 +125,12 @@ body{
 
 
 
-
 h1,
 h2{
 
-
-    font-family:"Caveat", cursive;
-
+    font-family:"Caveat",cursive;
 
     color:#6b3fa0;
-
 
 }
 
@@ -148,12 +138,9 @@ h2{
 
 h1{
 
-
     font-size:60px;
 
-
     margin-bottom:20px;
-
 
 }
 
@@ -161,15 +148,11 @@ h1{
 
 p{
 
-
     font-size:26px;
-
 
     color:#6b3fa0;
 
-
 }
-
 
 
 
@@ -180,7 +163,7 @@ p{
 button{
 
 
-    font-family:"Patrick Hand", cursive;
+    font-family:"Patrick Hand",cursive;
 
 
     font-size:25px;
@@ -201,15 +184,10 @@ button{
 
     background:
 
-
     linear-gradient(
-
         135deg,
-
         #ff9fcb,
-
         #bfa0ff
-
     );
 
 
@@ -217,13 +195,10 @@ button{
     color:white;
 
 
-
     cursor:pointer;
 
 
-
     box-shadow:
-
 
     0 10px 25px rgba(150,90,200,.35);
 
@@ -242,9 +217,7 @@ button:hover{
 
     transform:
 
-
     translateY(-5px)
-
     scale(1.05);
 
 
@@ -256,29 +229,20 @@ button:hover{
 
 
 
-
-
 /* INPUTS */
-
 
 
 label{
 
-
     display:block;
-
 
     text-align:left;
 
-
     margin-top:20px;
-
 
     color:#6b3fa0;
 
-
     font-size:24px;
-
 
 }
 
@@ -303,7 +267,7 @@ textarea{
     background:white;
 
 
-    font-family:"Patrick Hand", cursive;
+    font-family:"Patrick Hand",cursive;
 
 
     font-size:22px;
@@ -315,9 +279,7 @@ textarea{
 
 textarea{
 
-
     resize:none;
-
 
 }
 
@@ -329,7 +291,7 @@ textarea{
 
 
 
-/* BIG POKEMON DECORATIONS */
+/* POKEMON */
 
 
 .pokemon{
@@ -338,13 +300,10 @@ textarea{
     position:absolute;
 
 
-    width:170px;
+    width:150px;
 
 
     z-index:2;
-
-
-    opacity:1;
 
 
     pointer-events:none;
@@ -360,16 +319,16 @@ textarea{
 
 
 
-/* GENGAR */
+/* Gengar */
 
 
 .gengar{
 
 
-    left:40px;
+    left:2%;
 
 
-    bottom:40px;
+    bottom:5%;
 
 
 }
@@ -379,16 +338,16 @@ textarea{
 
 
 
-/* ESPEON */
+/* Espeon */
 
 
 .espeon{
 
 
-    right:40px;
+    right:2%;
 
 
-    bottom:45px;
+    bottom:8%;
 
 
     animation-delay:1s;
@@ -401,16 +360,17 @@ textarea{
 
 
 
-/* CLEFAIRY */
+
+/* Clefairy */
 
 
 .clefairy{
 
 
-    right:55px;
+    right:4%;
 
 
-    top:40px;
+    top:5%;
 
 
     animation-delay:2s;
@@ -423,16 +383,17 @@ textarea{
 
 
 
-/* SKITTY */
+
+/* Skitty */
 
 
 .skitty{
 
 
-    left:55px;
+    left:4%;
 
 
-    top:50px;
+    top:8%;
 
 
     animation-delay:3s;
@@ -446,13 +407,13 @@ textarea{
 
 
 
-/* MEW */
+/* Mew */
 
 
 .mew{
 
 
-    width:120px;
+    width:100px;
 
 
     top:50%;
@@ -464,16 +425,10 @@ textarea{
     transform:translate(-50%,-50%);
 
 
-
-    opacity:.30;
-
+    opacity:.25;
 
 
     z-index:1;
-
-
-
-    animation-delay:4s;
 
 
 }
@@ -486,15 +441,12 @@ textarea{
 
 
 
-/* PREVIEW PAPER */
-
+/* FINAL PAGE */
 
 
 .final-card{
 
-
     position:relative;
-
 
 }
 
@@ -512,7 +464,6 @@ textarea{
 
     background:
 
-
     rgba(255,210,240,.6);
 
 
@@ -523,13 +474,10 @@ textarea{
 
     border:
 
-
     2px dashed #c7a0ff;
 
 
 }
-
-
 
 
 
@@ -552,202 +500,17 @@ textarea{
 
 
 
-
-
-/* ANIMATIONS */
-
-
-@keyframes fadeIn{
-
-
-from{
-
-
-opacity:0;
-
-
-transform:translateY(30px);
-
-
-}
-
-
-
-to{
-
-
-opacity:1;
-
-
-transform:translateY(0);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-@keyframes float{
-
-
-0%{
-
-
-transform:translateY(0);
-
-
-}
-
-
-
-50%{
-
-
-transform:translateY(-18px);
-
-
-}
-
-
-
-100%{
-
-
-transform:translateY(0);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-@media(max-width:900px){
-
-
-.pokemon{
-
-
-    width:120px;
-
-
-}
-
-
-
-.mew{
-
-
-    width:90px;
-
-
-}
-
-
-
-.card{
-
-
-    max-width:600px;
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-@media(max-width:600px){
-
-
-body{
-
-
-overflow:auto;
-
-
-}
-
-
-
-.card{
-
-
-padding:30px;
-
-
-}
-
-
-
-h1{
-
-
-font-size:45px;
-
-
-}
-
-
-
-p{
-
-
-font-size:21px;
-
-
-}
-
-
-
-button{
-
-
-font-size:21px;
-
-
-}
-
-
-
-.pokemon{
-
-
-width:85px;
-
-
-}
-
-
-
-}
-
-
-/* NIGHT SKY EFFECT */
+/* NIGHT EFFECT */
 
 
 .scene::before{
 
+
     content:"";
 
+
     position:absolute;
+
 
     inset:0;
 
@@ -763,50 +526,37 @@ width:85px;
 
     z-index:0;
 
+
 }
 
 
 
 
 
-.scene::after{
-
-    content:"";
 
 
-    position:absolute;
+/* ANIMATIONS */
 
 
-    width:260px;
-
-    height:260px;
+@keyframes fadeIn{
 
 
-    top:40px;
+from{
 
-    right:120px;
+opacity:0;
 
+transform:translateY(30px);
 
-
-    background:
-
-    radial-gradient(
-        circle,
-        #fff6ff,
-        rgba(255,255,255,0)
-    );
+}
 
 
+to{
 
-    border-radius:50%;
+opacity:1;
 
+transform:translateY(0);
 
-
-    opacity:.7;
-
-
-
-    z-index:0;
+}
 
 
 }
@@ -815,22 +565,28 @@ width:85px;
 
 
 
-/* LITTLE STARS */
+@keyframes float{
 
 
-.scene{
+0%{
 
-    background-image:
+transform:translateY(0);
 
-    radial-gradient(
-        white 2px,
-        transparent 2px
-    );
+}
 
 
-    background-size:
+50%{
 
-    120px 120px;
+transform:translateY(-18px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
 
 
 }
@@ -839,13 +595,54 @@ width:85px;
 
 
 
-/* KEEP CONTENT ABOVE BACKGROUND */
 
 
-.card,
-.pokemon{
+/* TABLET */
 
-    position:relative;
+
+@media(max-width:900px){
+
+
+    .pokemon{
+
+        width:110px;
+
+    }
+
+
+    .mew{
+
+        width:80px;
+
+    }
+
+
+    .card{
+
+        max-width:600px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* PHONE */
+
+
+@media(max-width:700px){
+
+
+body{
+
+    overflow:auto;
 
 }
 
@@ -853,7 +650,42 @@ width:85px;
 
 .card{
 
-    z-index:5;
+
+    width:85%;
+
+
+    padding:25px;
+
+
+}
+
+
+
+h1{
+
+
+    font-size:42px;
+
+
+}
+
+
+
+p{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+button{
+
+
+    font-size:21px;
+
 
 }
 
@@ -861,31 +693,22 @@ width:85px;
 
 .pokemon{
 
-    z-index:3;
+
+    width:80px;
+
 
 }
 
-.moon{
-
-    position:absolute;
-
-    top:30px;
-
-    left:50%;
 
 
-    transform:translateX(-50%);
+.mew{
 
 
-    font-size:90px;
+    width:60px;
 
 
-    opacity:.6;
+}
 
 
-    z-index:1;
-
-
-    animation:float 5s infinite;
 
 }
