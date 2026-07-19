@@ -7,18 +7,41 @@ let chosenPlans = "";
 
 
 
-// START ADVENTURE
+
+// START ADVENTURE BUTTON
 
 window.startAdventure = function(){
 
-    document
-    .getElementById("opening")
-    .classList.add("hidden");
+    console.log("Adventure started");
 
 
-    document
-    .getElementById("planner")
-    .classList.remove("hidden");
+    const opening =
+    document.getElementById("opening");
+
+
+    const planner =
+    document.getElementById("planner");
+
+
+
+    if(opening && planner){
+
+
+        opening.classList.add("hidden");
+
+
+        planner.classList.remove("hidden");
+
+
+    } else {
+
+
+        console.error(
+            "Missing opening or planner section"
+        );
+
+
+    }
 
 };
 
@@ -28,7 +51,7 @@ window.startAdventure = function(){
 
 
 
-// PREVIEW ADVENTURE
+// PREVIEW BUTTON
 
 window.previewAdventure = function(){
 
@@ -59,19 +82,19 @@ window.previewAdventure = function(){
 
 
 
-
     if(
         !chosenDate ||
         !chosenTime ||
         !chosenLocation
     ){
 
-        alert("Fill out the date, time, and location ♡");
+        alert(
+            "Please fill out the date, time, and location ♡"
+        );
 
         return;
 
     }
-
 
 
 
@@ -91,50 +114,48 @@ window.previewAdventure = function(){
 
 
 
-
     document
     .getElementById("previewDetails")
     .innerHTML = `
 
 
-📅 <b>Date:</b><br>
+📅 <b>Date</b><br>
 ${chosenDate}
 
 
 <br><br>
 
 
-🕒 <b>Time:</b><br>
+⏰ <b>Time</b><br>
 ${chosenTime}
 
 
 <br><br>
 
 
-📍 <b>Location:</b><br>
+📍 <b>Location</b><br>
 ${chosenLocation}
 
 
 <br><br>
 
 
-👗 <b>Dress:</b><br>
-${chosenDress || "Anything cute ♡"}
+👗 <b>Dress</b><br>
+${chosenDress || "Cute and comfy ♡"}
 
 
 <br><br>
 
 
-🎒 <b>Bring:</b><br>
+🎒 <b>Bring</b><br>
 ${chosenBring || "Just yourself 💜"}
 
 
 <br><br>
 
 
-🌸 <b>Plans:</b><br>
+🌸 <b>Plans</b><br>
 ${chosenPlans || "A surprise adventure ✨"}
-
 
 `;
 
@@ -147,21 +168,9 @@ ${chosenPlans || "A surprise adventure ✨"}
 
 
 
-
-
 // CALENDAR
 
 window.downloadCalendar = function(){
-
-
-    if(!chosenDate || !chosenTime){
-
-        alert("Choose a date and time first ♡");
-
-        return;
-
-    }
-
 
 
     const start =
@@ -184,8 +193,6 @@ window.downloadCalendar = function(){
 
 
 
-
-
     function formatDate(date){
 
         return date
@@ -195,7 +202,6 @@ window.downloadCalendar = function(){
         +"Z";
 
     }
-
 
 
 
@@ -231,11 +237,8 @@ END:VCALENDAR`;
 
 
 
-
     const url =
     URL.createObjectURL(blob);
-
-
 
 
 
@@ -244,7 +247,7 @@ END:VCALENDAR`;
 
 
 
-    link.href=url;
+    link.href = url;
 
 
     link.download =
@@ -271,10 +274,7 @@ END:VCALENDAR`;
 
 
 
-
-
-
-// CONFIRM ADVENTURE + EMAIL
+// CONFIRM ADVENTURE
 
 window.confirmAdventure = function(){
 
@@ -315,11 +315,7 @@ window.confirmAdventure = function(){
 
 
 
-
-
-
     console.log(
-        "Adventure data:",
         adventureData
     );
 
@@ -327,18 +323,13 @@ window.confirmAdventure = function(){
 
 
 
-
-
     // FIREBASE
 
-
     if(window.saveAdventure){
-
 
         window.saveAdventure(
             adventureData
         );
-
 
     }
 
@@ -347,11 +338,7 @@ window.confirmAdventure = function(){
 
 
 
-
-
-
     // EMAILJS
-
 
     emailjs.send(
 
@@ -363,20 +350,12 @@ window.confirmAdventure = function(){
 
     )
 
-
-
     .then(function(response){
 
 
         console.log(
-            "EMAIL SENT:",
+            "Email sent",
             response
-        );
-
-
-
-        alert(
-            "Adventure confirmed 💜✨"
         );
 
 
@@ -388,14 +367,12 @@ window.confirmAdventure = function(){
 
 
         console.error(
-            "EMAIL FAILED:",
+            "Email error",
             error
         );
 
 
     });
-
-
 
 
 
@@ -413,8 +390,6 @@ window.confirmAdventure = function(){
     .getElementById("acceptedPage")
     .classList.remove("hidden");
 
-
-
 };
 
 
@@ -422,7 +397,6 @@ window.confirmAdventure = function(){
 
 
 
-
 console.log(
-"Date Site Pokémon Adventure running 💜"
+"Pokémon Date Site loaded 💜"
 );
