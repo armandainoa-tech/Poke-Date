@@ -712,3 +712,43 @@ button{
 
 
 }
+
+/* OPENING SCREEN */
+
+.intro-card{
+
+    animation:popIn .8s ease;
+
+}
+
+
+.intro-mew{
+
+    width:100px;
+
+    animation:float 4s infinite;
+
+}
+
+
+
+@keyframes popIn{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
