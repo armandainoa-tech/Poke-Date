@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Adventure ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="scene">
+
+
+<!-- DECORATIONS -->
+
+<div class="pokemon gengar">
+👻
+</div>
+
+<div class="pokemon clefairy">
+🎀
+</div>
+
+
+<div class="sparkles">
+✨ 💜 ✨ 🩷 ✨
+</div>
+
+
+
+
+<!-- OPENING -->
+
+<section id="opening" class="screen">
+
+
+<div class="card">
+
+
+<h1>
+our little adventure awaits... ♡
+</h1>
+
+
+<p>
+i made something special for you 💜
+</p>
+
+
+<button onclick="startAdventure()">
+
+💌 let's plan our date
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- DATE PLANNER -->
+
+
+<section id="planner" class="screen hidden">
+
+
+<div class="card">
+
+
+<h1>
+let's plan our date ♡
+</h1>
+
+
+<p>
+tell me everything ✨
+</p>
+
+
+
+<label>
+📅 when are we going?
+</label>
+
+<input 
+type="date"
+id="dateInput">
+
+
+
+
+
+<label>
+🕒 what time?
+</label>
+
+<input 
+type="time"
+id="timeInput">
+
+
+
+
+
+
+<label>
+📍 where are we going?
+</label>
+
+<input 
+type="text"
+id="locationInput"
+placeholder="our little adventure spot...">
+
+
+
+
+
+
+<label>
+👗 dress code
+</label>
+
+<input
+type="text"
+id="dressInput"
+placeholder="cute, cozy, fancy...">
+
+
+
+
+
+
+<label>
+🎒 bring this
+</label>
+
+<input
+type="text"
+id="bringInput"
+placeholder="hoodie, blanket, snacks...">
+
+
+
+
+
+
+
+<label>
+🌸 our plans
+</label>
+
+
+<textarea
+
+id="plansInput"
+
+rows="5"
+
+placeholder="tell me what we're doing...">
+
+</textarea>
+
+
+
+
+
+
+
+<button onclick="previewAdventure()">
+
+✨ preview our date
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PREVIEW -->
+
+
+<section id="preview" class="screen hidden">
+
+
+<div class="card final-card">
+
+
+<h1>
+our adventure details ♡
+</h1>
+
+
+
+
+<div class="invitation-paper">
+
+
+<p id="previewDetails">
+
+</p>
+
+
+</div>
+
+
+
+
+<button onclick="downloadCalendar()">
+
+📅 save to calendar
+
+</button>
+
+
+
+<button onclick="confirmAdventure()">
+
+💜 make it official
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ACCEPTED -->
+
+
+<section id="acceptedPage" class="screen hidden">
+
+
+<div class="card final-card">
+
+
+<h1>
+it's official ♡
+</h1>
+
+
+
+<p>
+
+🩷💜
+
+<br><br>
+
+our little adventure is waiting for us
+
+<br><br>
+
+can't wait to see you ♡
+
+</p>
+
+
+
+<div class="celebration">
+
+✨ 🩷 ✨ 💜 ✨
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<!-- EMAILJS -->
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+<script>
+
+emailjs.init({
+
+publicKey:
+"j5hvrNCMFnB_AUKLb"
+
+});
+
+</script>
+
+
+
+
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+
+import { saveAdventure }
+
+from "./firebase.js";
+
+
+window.saveAdventure =
+saveAdventure;
+
+
+</script>
+
+
+
+
+
+
+<!-- MAIN SCRIPT -->
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap');
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+
+body{
+
+    margin:0;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-family:"Patrick Hand", cursive;
+
+
+    background:
+
+    linear-gradient(
+        160deg,
+        #ffd6ea,
+        #e4d4ff,
+        #c8a7ff
+    );
+
+}
+
+
+
+
+
+.scene{
+
+    width:100%;
+
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+
+
+
+
+.screen{
+
+    width:100%;
+
+    text-align:center;
+
+    animation:fadeIn .8s ease;
+
+}
+
+
+
+.hidden{
+
+    display:none !important;
+
+}
+
+
+
+
+
+.card{
+
+    width:90%;
+
+    max-width:600px;
+
+    padding:40px;
+
+    background:
+
+    rgba(255,255,255,.88);
+
+
+    border-radius:45px;
+
+
+    box-shadow:
+
+    0 25px 70px rgba(100,50,150,.25);
+
+
+    backdrop-filter:blur(12px);
+
+}
+
+
+
+
+
+
+h1,
+h2{
+
+    font-family:"Caveat", cursive;
+
+    color:#68408f;
+
+}
+
+
+
+h1{
+
+    font-size:58px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+p{
+
+    font-size:25px;
+
+    color:#68408f;
+
+}
+
+
+
+
+
+
+button{
+
+    font-family:"Patrick Hand", cursive;
+
+    font-size:24px;
+
+    padding:15px 35px;
+
+    margin-top:20px;
+
+    border:none;
+
+    border-radius:50px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #ffb6d9,
+        #c8a7ff
+    );
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(150,90,200,.3);
+
+
+    transition:.25s;
+
+}
+
+
+
+button:hover{
+
+    transform:
+
+    translateY(-5px)
+    scale(1.05);
+
+}
+
+
+
+
+
+
+
+/* FORM */
+
+
+
+label{
+
+    display:block;
+
+    text-align:left;
+
+    margin-top:18px;
+
+    margin-bottom:5px;
+
+    font-size:24px;
+
+    color:#68408f;
+
+}
+
+
+
+input,
+textarea{
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    border-radius:25px;
+
+
+    border:
+
+    2px solid #e7caff;
+
+
+    background:white;
+
+
+    font-family:"Patrick Hand", cursive;
+
+
+    font-size:22px;
+
+
+    outline:none;
+
+
+}
+
+
+
+textarea{
+
+    resize:none;
+
+}
+
+
+
+input:focus,
+textarea:focus{
+
+    border-color:#c18cff;
+
+}
+
+
+
+
+
+
+
+
+
+/* DECORATIONS */
+
+
+.pokemon{
+
+    position:absolute;
+
+    font-size:90px;
+
+    opacity:.7;
+
+    animation:float 4s infinite;
+
+}
+
+
+
+.gengar{
+
+    bottom:20px;
+
+    left:20px;
+
+}
+
+
+
+.clefairy{
+
+    top:20px;
+
+    right:20px;
+
+}
+
+
+
+
+
+
+
+.sparkles{
+
+    position:absolute;
+
+    top:40px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:30px;
+
+    animation:float 3s infinite;
+
+}
+
+
+
+
+
+
+
+
+/* PREVIEW */
+
+
+.final-card{
+
+    position:relative;
+
+}
+
+
+
+.invitation-paper{
+
+    margin-top:25px;
+
+    padding:25px;
+
+
+    background:
+
+    rgba(255,220,240,.6);
+
+
+    border-radius:30px;
+
+
+    border:
+
+    2px dashed #c8a7ff;
+
+}
+
+
+
+#previewDetails{
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+
+.celebration{
+
+    font-size:45px;
+
+    animation:float 2s infinite;
+
+}
+
+
+
+
+
+
+
+
+/* ANIMATIONS */
+
+
+
+@keyframes fadeIn{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+@keyframes float{
+
+
+0%{
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+
+
+
+@media(max-width:600px){
+
+
+.card{
+
+padding:30px;
+
+}
+
+
+h1{
+
+font-size:45px;
+
+}
+
+
+p{
+
+font-size:21px;
+
+}
+
+
+button{
+
+font-size:21px;
+
+}
+
+
+label{
+
+font-size:21px;
+
+}
+
+
+input,
+textarea{
+
+font-size:20px;
+
+}
+
+
+.pokemon{
+
+font-size:70px;
+
+}
+
+
+}

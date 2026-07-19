@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adventure Updates ♡</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+
+<style>
+
+
+*{
+box-sizing:border-box;
+}
+
+
+
+body{
+
+margin:0;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-family:"Patrick Hand",cursive;
+
+
+background:
+
+linear-gradient(
+160deg,
+#ffd6ea,
+#e4d4ff,
+#c8a7ff
+);
+
+}
+
+
+
+.card{
+
+width:90%;
+
+max-width:600px;
+
+padding:40px;
+
+background:white;
+
+border-radius:40px;
+
+text-align:center;
+
+box-shadow:
+
+0 25px 60px rgba(100,50,150,.25);
+
+}
+
+
+
+h1{
+
+font-family:"Caveat",cursive;
+
+font-size:55px;
+
+color:#68408f;
+
+}
+
+
+
+#status{
+
+font-size:24px;
+
+color:#68408f;
+
+line-height:1.7;
+
+}
+
+
+
+.pokemon{
+
+font-size:70px;
+
+position:fixed;
+
+}
+
+
+
+.gengar{
+
+bottom:20px;
+
+left:20px;
+
+}
+
+
+
+.clefairy{
+
+top:20px;
+
+right:20px;
+
+}
+
+
+
+.details{
+
+background:#ffe8f4;
+
+padding:25px;
+
+border-radius:30px;
+
+margin-top:25px;
+
+}
+
+
+
+@media(max-width:600px){
+
+
+h1{
+
+font-size:45px;
+
+}
+
+
+#status{
+
+font-size:21px;
+
+}
+
+
+}
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="pokemon gengar">
+👻
+</div>
+
+
+<div class="pokemon clefairy">
+🎀
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h1>
+💜 Adventure Updates ♡
+</h1>
+
+
+
+<div id="status">
+
+Waiting for adventure...
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script type="module">
+
+
+import { initializeApp }
+
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+
+
+import {
+
+getFirestore,
+
+doc,
+
+onSnapshot
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
+
+
+
+
+const firebaseConfig = {
+
+
+apiKey: "AIzaSyBBzTwMmhD1t-gZeX5W35K1aG2okrUo91o",
+
+
+authDomain: "date-site-bfb53.firebaseapp.com",
+
+
+projectId: "date-site-bfb53",
+
+
+storageBucket: "date-site-bfb53.firebasestorage.app",
+
+
+messagingSenderId: "305849379339",
+
+
+appId: "1:305849379339:web:ded141e65eae95ec31f50e"
+
+
+};
+
+
+
+
+
+
+
+const app =
+initializeApp(firebaseConfig);
+
+
+
+const db =
+getFirestore(app);
+
+
+
+
+
+const status =
+document.getElementById("status");
+
+
+
+
+
+
+
+onSnapshot(
+
+doc(
+db,
+"adventures",
+"latest"
+),
+
+(snapshot)=>{
+
+
+if(snapshot.exists()){
+
+
+const data =
+snapshot.data();
+
+
+
+
+status.innerHTML =
+
+
+`
+
+💗 Your little adventure is official 💗
+
+
+<div class="details">
+
+
+📅 <b>Date</b>
+
+<br>
+
+${data.date || "No date saved"}
+
+
+<br><br>
+
+
+
+🕒 <b>Time</b>
+
+<br>
+
+${data.time || "No time saved"}
+
+
+<br><br>
+
+
+
+📍 <b>Location</b>
+
+<br>
+
+${data.location || "No location saved"}
+
+
+<br><br>
+
+
+
+👗 <b>Dress Code</b>
+
+<br>
+
+${data.dressCode || "No dress code saved"}
+
+
+<br><br>
+
+
+
+🎒 <b>Bring</b>
+
+<br>
+
+${data.bring || "Nothing listed"}
+
+
+<br><br>
+
+
+
+🌸 <b>Plans</b>
+
+<br>
+
+${data.plans || "No plans saved"}
+
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+}
+
+);
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
