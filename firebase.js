@@ -1,3 +1,5 @@
+// FIREBASE SETUP
+
 import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
@@ -18,25 +20,33 @@ from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
 
+
+
 const firebaseConfig = {
 
 
-apiKey: "AIzaSyBBzTwMmhD1t-gZeX5W35K1aG2okrUo91o",
+apiKey:
+"AIzaSyBBzTwMmhD1t-gZeX5W35K1aG2okrUo91o",
 
 
-authDomain: "date-site-bfb53.firebaseapp.com",
+authDomain:
+"date-site-bfb53.firebaseapp.com",
 
 
-projectId: "date-site-bfb53",
+projectId:
+"date-site-bfb53",
 
 
-storageBucket: "date-site-bfb53.firebasestorage.app",
+storageBucket:
+"date-site-bfb53.firebasestorage.app",
 
 
-messagingSenderId: "305849379339",
+messagingSenderId:
+"305849379339",
 
 
-appId: "1:305849379339:web:ded141e65eae95ec31f50e"
+appId:
+"1:305849379339:web:ded141e65eae95ec31f50e"
 
 
 };
@@ -46,10 +56,14 @@ appId: "1:305849379339:web:ded141e65eae95ec31f50e"
 
 
 
-const app = initializeApp(firebaseConfig);
+
+const app =
+initializeApp(firebaseConfig);
 
 
-const db = getFirestore(app);
+
+const db =
+getFirestore(app);
 
 
 
@@ -61,126 +75,135 @@ const db = getFirestore(app);
 export async function saveAdventure(details){
 
 
-    try {
+try{
 
 
 
-        await setDoc(
+await setDoc(
 
-            doc(
-                db,
-                "adventures",
-                "latest"
-            ),
 
+doc(
+db,
+"adventures",
+"latest"
+),
 
-            {
 
 
-                accepted:true,
+{
 
 
+accepted:true,
 
-                message:
 
-                details.message ||
 
-                "Your little adventure was accepted ♡",
+message:
 
+details.message ||
 
+"Your little adventure was accepted ♡",
 
 
-                date:
 
-                details.date ||
 
-                "No date saved",
 
+date:
 
+details.date ||
 
+"No date saved",
 
-                time:
 
-                details.time ||
 
-                "No time saved",
 
 
+time:
 
+details.time ||
 
-                location:
+"No time saved",
 
-                details.location ||
 
-                "No location saved",
 
 
 
+location:
 
-                dressCode:
+details.location ||
 
-                details.dressCode ||
+"No location saved",
 
-                "No dress code saved",
 
 
 
 
-                bring:
+dressCode:
 
-                details.bring ||
+details.dressCode ||
 
-                "No items listed",
+"No outfit chosen",
 
 
 
 
-                plans:
 
-                details.plans ||
+bring:
 
-                "No plans saved",
+details.bring ||
 
+"Nothing needed 💜",
 
 
 
-                updated:
 
-                new Date().toISOString()
 
+plans:
 
-            }
+details.plans ||
 
+"No plans saved",
 
-        );
 
 
 
 
+updated:
 
-        console.log(
-            "Adventure saved ♡"
-        );
+new Date().toISOString()
 
 
+}
 
-    }
 
 
+);
 
-    catch(error){
 
 
-        console.error(
 
-            "Firebase save failed:",
 
-            error
+console.log(
+"Adventure saved 💜"
+);
 
-        );
 
 
-    }
+
+}
+
+catch(error){
+
+
+console.error(
+
+"Firebase save failed:",
+
+error
+
+);
+
+
+}
 
 
 

@@ -8,12 +8,9 @@ let chosenPlans = "";
 
 
 
-// START ADVENTURE BUTTON
+// START ADVENTURE
 
 window.startAdventure = function(){
-
-    console.log("Adventure started");
-
 
     const opening =
     document.getElementById("opening");
@@ -23,23 +20,11 @@ window.startAdventure = function(){
     document.getElementById("planner");
 
 
-
     if(opening && planner){
-
 
         opening.classList.add("hidden");
 
-
         planner.classList.remove("hidden");
-
-
-    } else {
-
-
-        console.error(
-            "Missing opening or planner section"
-        );
-
 
     }
 
@@ -51,7 +36,8 @@ window.startAdventure = function(){
 
 
 
-// PREVIEW BUTTON
+
+// PREVIEW ADVENTURE
 
 window.previewAdventure = function(){
 
@@ -82,6 +68,7 @@ window.previewAdventure = function(){
 
 
 
+
     if(
         !chosenDate ||
         !chosenTime ||
@@ -89,12 +76,14 @@ window.previewAdventure = function(){
     ){
 
         alert(
-            "Please fill out the date, time, and location ♡"
+        "Please add your date, time, and location ♡"
         );
 
         return;
 
     }
+
+
 
 
 
@@ -114,12 +103,15 @@ window.previewAdventure = function(){
 
 
 
+
+
+
     document
     .getElementById("previewDetails")
     .innerHTML = `
 
 
-📅 <b>Date</b><br>
+📅 <b>Adventure Date</b><br>
 ${chosenDate}
 
 
@@ -140,21 +132,21 @@ ${chosenLocation}
 <br><br>
 
 
-👗 <b>Dress</b><br>
-${chosenDress || "Cute and comfy ♡"}
+👗 <b>Trainer Outfit</b><br>
+${chosenDress || "Something cute ♡"}
 
 
 <br><br>
 
 
-🎒 <b>Bring</b><br>
+🎒 <b>Inventory</b><br>
 ${chosenBring || "Just yourself 💜"}
 
 
 <br><br>
 
 
-🌸 <b>Plans</b><br>
+🌸 <b>Quest</b><br>
 ${chosenPlans || "A surprise adventure ✨"}
 
 `;
@@ -168,7 +160,9 @@ ${chosenPlans || "A surprise adventure ✨"}
 
 
 
+
 // CALENDAR
+
 
 window.downloadCalendar = function(){
 
@@ -186,10 +180,11 @@ window.downloadCalendar = function(){
     new Date(start);
 
 
-
     end.setHours(
         end.getHours()+1
     );
+
+
 
 
 
@@ -207,18 +202,24 @@ window.downloadCalendar = function(){
 
 
 
+
+
     const calendar =
 
 `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
-SUMMARY:💜 Our Little Adventure ♡
+SUMMARY:💜 Our Little Adventure
 DTSTART:${formatDate(start)}
 DTEND:${formatDate(end)}
 LOCATION:${chosenLocation}
-DESCRIPTION:${chosenPlans}
+DESCRIPTION:
+Dress: ${chosenDress}
+Bring: ${chosenBring}
+Plans: ${chosenPlans}
 END:VEVENT
 END:VCALENDAR`;
+
 
 
 
@@ -230,10 +231,9 @@ END:VCALENDAR`;
         [calendar],
         {
             type:
-            "text/calendar"
+            "text/calendar;charset=utf-8"
         }
     );
-
 
 
 
@@ -247,7 +247,7 @@ END:VCALENDAR`;
 
 
 
-    link.href = url;
+    link.href=url;
 
 
     link.download =
@@ -276,122 +276,132 @@ END:VCALENDAR`;
 
 // CONFIRM ADVENTURE
 
+
 window.confirmAdventure = function(){
 
 
 
-    const adventureData = {
+const adventureData = {
 
 
-        message:
-        "Your little adventure was accepted ♡",
+    message:
+    "Your little adventure was accepted ♡",
 
 
-        date:
-        chosenDate,
+    date:
+    chosenDate,
 
 
-        time:
-        chosenTime,
+    time:
+    chosenTime,
 
 
-        location:
-        chosenLocation,
+    location:
+    chosenLocation,
 
 
-        dressCode:
-        chosenDress,
+    dressCode:
+    chosenDress,
 
 
-        bring:
-        chosenBring,
+    bring:
+    chosenBring,
 
 
-        plans:
-        chosenPlans
+    plans:
+    chosenPlans
 
-
-    };
-
-
-
-    console.log(
-        adventureData
-    );
-
-
-
-
-
-    // FIREBASE
-
-    if(window.saveAdventure){
-
-        window.saveAdventure(
-            adventureData
-        );
-
-    }
-
-
-
-
-
-
-    // EMAILJS
-
-    emailjs.send(
-
-        "service_msyya77",
-
-        "template_z217jfy",
-
-        adventureData
-
-    )
-
-    .then(function(response){
-
-
-        console.log(
-            "Email sent",
-            response
-        );
-
-
-    })
-
-
-
-    .catch(function(error){
-
-
-        console.error(
-            "Email error",
-            error
-        );
-
-
-    });
-
-
-
-
-
-
-
-    document
-    .getElementById("preview")
-    .classList.add("hidden");
-
-
-
-    document
-    .getElementById("acceptedPage")
-    .classList.remove("hidden");
 
 };
 
+
+
+
+
+
+
+console.log(
+"Adventure Data:",
+adventureData
+);
+
+
+
+
+
+
+
+// FIREBASE SAVE
+
+
+if(window.saveAdventure){
+
+    window.saveAdventure(
+        adventureData
+    );
+
+}
+
+
+
+
+
+
+
+
+// EMAILJS
+
+
+emailjs.send(
+
+"service_msyya77",
+
+"template_z217jfy",
+
+adventureData
+
+)
+
+.then(function(response){
+
+console.log(
+"EMAIL SENT 💜",
+response
+);
+
+
+})
+
+.catch(function(error){
+
+console.error(
+"EMAIL FAILED",
+error
+);
+
+
+});
+
+
+
+
+
+
+
+
+document
+.getElementById("preview")
+.classList.add("hidden");
+
+
+
+document
+.getElementById("acceptedPage")
+.classList.remove("hidden");
+
+
+
+};
 
 
 

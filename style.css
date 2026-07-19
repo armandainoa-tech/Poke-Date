@@ -6,11 +6,22 @@
 }
 
 
+html,
 body{
+
+    width:100%;
+
+    max-width:100%;
 
     margin:0;
 
-    width:100%;
+    overflow-x:hidden;
+
+}
+
+
+
+body{
 
     min-height:100vh;
 
@@ -20,7 +31,6 @@ body{
 
     align-items:center;
 
-    overflow:hidden;
 
     font-family:"Patrick Hand", cursive;
 
@@ -28,13 +38,16 @@ body{
     background:
 
     linear-gradient(
-        160deg,
-        #ffd6ea,
-        #e7d5ff,
-        #c6a5ff
+        135deg,
+        #ffd6ed,
+        #d9c8ff,
+        #ffc9e8
     );
 
+
 }
+
+
 
 
 
@@ -42,9 +55,10 @@ body{
 
     width:100%;
 
-    height:100vh;
+    min-height:100vh;
 
     position:relative;
+
 
     display:flex;
 
@@ -52,21 +66,122 @@ body{
 
     align-items:center;
 
+
+    overflow:hidden;
+
 }
 
 
 
+
+
+
+/* POKEMON */
+
+
+.pokemon{
+
+    position:absolute;
+
+    width:110px;
+
+    max-width:20vw;
+
+
+    z-index:1;
+
+
+    filter:
+    drop-shadow(
+        0 10px 15px rgba(0,0,0,.18)
+    );
+
+
+    animation:
+    floatPokemon 4s ease-in-out infinite;
+
+}
+
+
+
+
+.gengar{
+
+    left:2%;
+
+    bottom:8%;
+
+}
+
+
+
+
+.espeon{
+
+    right:2%;
+
+    top:10%;
+
+}
+
+
+
+
+.clefairy{
+
+    left:5%;
+
+    top:12%;
+
+}
+
+
+
+
+.skitty{
+
+    right:5%;
+
+    bottom:10%;
+
+}
+
+
+
+
+.mew{
+
+    right:42%;
+
+    top:3%;
+
+}
+
+
+
+
+
+
+
+/* SCREENS */
 
 
 .screen{
 
     width:100%;
 
+    padding:20px;
+
+    position:relative;
+
+    z-index:5;
+
     text-align:center;
 
-    animation:fadeIn .8s ease;
+    animation:fade .6s ease;
 
 }
+
 
 
 
@@ -80,42 +195,39 @@ body{
 
 
 
+
+
+/* CARD */
+
+
 .card{
 
 
     width:90%;
 
+    max-width:650px;
 
-    max-width:700px;
+
+    margin:auto;
 
 
-    padding:45px;
+    padding:40px;
 
 
     background:
 
-    rgba(255,255,255,.92);
+    rgba(255,255,255,.78);
 
 
+    border-radius:40px;
 
-    border-radius:45px;
 
+    backdrop-filter:blur(15px);
 
 
     box-shadow:
 
-    0 30px 80px rgba(120,70,180,.35);
-
-
-
-    backdrop-filter:blur(12px);
-
-
-
-    position:relative;
-
-
-    z-index:5;
+    0 20px 50px rgba(120,60,140,.25);
 
 
 }
@@ -123,24 +235,22 @@ body{
 
 
 
-
-
-h1,
-h2{
-
-    font-family:"Caveat",cursive;
-
-    color:#6b3fa0;
-
-}
 
 
 
 h1{
 
-    font-size:60px;
+    margin-top:0;
 
-    margin-bottom:20px;
+
+    font-family:"Caveat",cursive;
+
+
+    font-size:55px;
+
+
+    color:#8b4fa8;
+
 
 }
 
@@ -148,9 +258,10 @@ h1{
 
 p{
 
-    font-size:26px;
+    font-size:25px;
 
-    color:#6b3fa0;
+
+    color:#68446f;
 
 }
 
@@ -160,52 +271,59 @@ p{
 
 
 
+
+/* BUTTONS */
+
+
 button{
+
+
+    width:auto;
+
+    max-width:90%;
 
 
     font-family:"Patrick Hand",cursive;
 
 
-    font-size:25px;
+    font-size:24px;
 
 
-    padding:16px 38px;
+    padding:
+
+    14px 35px;
 
 
-    margin-top:20px;
+    margin:10px;
 
 
     border:none;
 
 
-    border-radius:50px;
+    border-radius:40px;
 
+
+    cursor:pointer;
+
+
+    color:white;
 
 
     background:
 
     linear-gradient(
         135deg,
-        #ff9fcb,
-        #bfa0ff
+        #ff8fcf,
+        #a878ff
     );
-
-
-
-    color:white;
-
-
-    cursor:pointer;
 
 
     box-shadow:
 
-    0 10px 25px rgba(150,90,200,.35);
-
+    0 8px 20px rgba(120,60,140,.25);
 
 
     transition:.25s;
-
 
 }
 
@@ -214,12 +332,10 @@ button{
 
 button:hover{
 
-
     transform:
 
     translateY(-5px)
     scale(1.05);
-
 
 }
 
@@ -232,22 +348,6 @@ button:hover{
 /* INPUTS */
 
 
-label{
-
-    display:block;
-
-    text-align:left;
-
-    margin-top:20px;
-
-    color:#6b3fa0;
-
-    font-size:24px;
-
-}
-
-
-
 input,
 textarea{
 
@@ -255,16 +355,16 @@ textarea{
     width:100%;
 
 
+    max-width:450px;
+
+
     padding:15px;
 
 
+    border:none;
+
+
     border-radius:25px;
-
-
-    border:2px solid #e5c8ff;
-
-
-    background:white;
 
 
     font-family:"Patrick Hand",cursive;
@@ -273,11 +373,19 @@ textarea{
     font-size:22px;
 
 
+    background:#fff0fa;
+
+
+    color:#68446f;
+
+
 }
 
 
 
 textarea{
+
+    height:110px;
 
     resize:none;
 
@@ -289,193 +397,29 @@ textarea{
 
 
 
-
-
-/* POKEMON */
-
-
-.pokemon{
-
-
-    position:absolute;
-
-
-    width:150px;
-
-
-    z-index:2;
-
-
-    pointer-events:none;
-
-
-    animation:float 5s ease-in-out infinite;
-
-
-}
-
-
-
-
-
-
-/* Gengar */
-
-
-.gengar{
-
-
-    left:2%;
-
-
-    bottom:5%;
-
-
-}
-
-
-
-
-
-
-/* Espeon */
-
-
-.espeon{
-
-
-    right:2%;
-
-
-    bottom:8%;
-
-
-    animation-delay:1s;
-
-
-}
-
-
-
-
-
-
-
-/* Clefairy */
-
-
-.clefairy{
-
-
-    right:4%;
-
-
-    top:5%;
-
-
-    animation-delay:2s;
-
-
-}
-
-
-
-
-
-
-
-/* Skitty */
-
-
-.skitty{
-
-
-    left:4%;
-
-
-    top:8%;
-
-
-    animation-delay:3s;
-
-
-}
-
-
-
-
-
-
-
-/* Mew */
-
-
-.mew{
-
-
-    width:100px;
-
-
-    top:50%;
-
-
-    left:50%;
-
-
-    transform:translate(-50%,-50%);
-
-
-    opacity:.25;
-
-
-    z-index:1;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* FINAL PAGE */
-
-
-.final-card{
-
-    position:relative;
-
-}
-
+/* PREVIEW */
 
 
 .invitation-paper{
 
 
-    margin-top:25px;
+    margin:25px 0;
 
 
-    padding:30px;
-
-
-
-    background:
-
-    rgba(255,210,240,.6);
-
+    padding:25px;
 
 
     border-radius:30px;
 
 
+    background:
+
+    rgba(255,255,255,.65);
+
 
     border:
 
-    2px dashed #c7a0ff;
-
+    2px dashed #d59adf;
 
 }
 
@@ -483,13 +427,39 @@ textarea{
 
 
 
-.celebration{
-
+.pokemon-ending{
 
     font-size:50px;
 
+}
 
-    animation:float 2s infinite;
+
+
+
+
+
+
+
+
+/* TABLET */
+
+
+@media (min-width:600px){
+
+
+.pokemon{
+
+    width:160px;
+
+}
+
+
+
+.card{
+
+    padding:50px;
+
+}
 
 
 }
@@ -500,34 +470,179 @@ textarea{
 
 
 
-/* NIGHT EFFECT */
 
 
-.scene::before{
+/* COMPUTER */
 
 
-    content:"";
+@media (min-width:1000px){
 
 
-    position:absolute;
+.pokemon{
+
+    width:230px;
+
+}
 
 
-    inset:0;
+
+.card{
+
+    max-width:750px;
+
+    padding:60px;
+
+}
 
 
-    background:
 
-    radial-gradient(
-        circle at top,
-        rgba(255,255,255,.35),
-        transparent 40%
-    );
+h1{
+
+    font-size:70px;
+
+}
 
 
-    z-index:0;
+
+p{
+
+    font-size:28px;
+
+}
 
 
 }
+
+
+
+
+
+
+
+
+
+/* PHONE */
+
+
+@media(max-width:600px){
+
+
+body{
+
+    overflow-y:auto;
+
+}
+
+
+
+.scene{
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+}
+
+
+
+.pokemon{
+
+    width:70px;
+
+    max-width:18vw;
+
+}
+
+
+
+.gengar{
+
+    left:-5px;
+
+    bottom:5%;
+
+}
+
+
+
+.espeon{
+
+    right:-5px;
+
+    top:8%;
+
+}
+
+
+
+.clefairy{
+
+    left:-5px;
+
+    top:15%;
+
+}
+
+
+
+.skitty{
+
+    right:-5px;
+
+    bottom:8%;
+
+}
+
+
+
+.mew{
+
+    right:38%;
+
+    top:2%;
+
+}
+
+
+
+.card{
+
+    width:95%;
+
+    padding:25px;
+
+}
+
+
+
+h1{
+
+    font-size:40px;
+
+}
+
+
+
+p{
+
+    font-size:20px;
+
+}
+
+
+
+button{
+
+    width:90%;
+
+    font-size:21px;
+
+}
+
+
+}
+
+
 
 
 
@@ -538,14 +653,14 @@ textarea{
 /* ANIMATIONS */
 
 
-@keyframes fadeIn{
+@keyframes fade{
 
 
 from{
 
 opacity:0;
 
-transform:translateY(30px);
+transform:translateY(25px);
 
 }
 
@@ -564,8 +679,7 @@ transform:translateY(0);
 
 
 
-
-@keyframes float{
+@keyframes floatPokemon{
 
 
 0%{
@@ -588,527 +702,5 @@ transform:translateY(0);
 
 }
 
-
-}
-
-
-
-
-
-
-
-/* TABLET */
-
-
-@media(max-width:900px){
-
-
-    .pokemon{
-
-        width:110px;
-
-    }
-
-
-    .mew{
-
-        width:80px;
-
-    }
-
-
-    .card{
-
-        max-width:600px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-
-
-/* PHONE */
-
-
-@media(max-width:700px){
-
-
-body{
-
-    overflow:auto;
-
-}
-
-
-
-.card{
-
-
-    width:85%;
-
-
-    padding:25px;
-
-
-}
-
-
-
-h1{
-
-
-    font-size:42px;
-
-
-}
-
-
-
-p{
-
-
-    font-size:20px;
-
-
-}
-
-
-
-button{
-
-
-    font-size:21px;
-
-
-}
-
-
-
-.pokemon{
-
-
-    width:80px;
-
-
-}
-
-
-
-.mew{
-
-
-    width:60px;
-
-
-}
-
-
-
-}
-
-/* OPENING SCREEN */
-
-.intro-card{
-
-    animation:popIn .8s ease;
-
-}
-
-
-.intro-mew{
-
-    width:100px;
-
-    animation:float 4s infinite;
-
-}
-
-
-
-@keyframes popIn{
-
-    from{
-
-        transform:scale(.8);
-
-        opacity:0;
-
-    }
-
-
-    to{
-
-        transform:scale(1);
-
-        opacity:1;
-
-    }
-
-}
-
-
-/* =========================
-   DEVICE RESPONSIVE DESIGN
-   ========================= */
-
-
-/* DESKTOP + LARGE SCREENS */
-
-@media (min-width: 1000px){
-
-    .card{
-
-        max-width:750px;
-
-        padding:55px;
-
-    }
-
-
-    h1{
-
-        font-size:65px;
-
-    }
-
-
-    p{
-
-        font-size:30px;
-
-    }
-
-
-    .pokemon{
-
-        width:190px;
-
-    }
-
-
-    .mew{
-
-        width:130px;
-
-    }
-
-
-}
-
-
-
-
-/* TABLET */
-
-@media (min-width:700px) and (max-width:999px){
-
-
-    .card{
-
-        max-width:650px;
-
-        padding:40px;
-
-    }
-
-
-    .pokemon{
-
-        width:130px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* IPHONE / SMALL SCREENS */
-
-@media (max-width:699px){
-
-
-    body{
-
-        overflow-y:auto;
-
-        min-height:100vh;
-
-        align-items:flex-start;
-
-        padding-top:40px;
-
-    }
-
-
-
-    .scene{
-
-        min-height:100vh;
-
-        height:auto;
-
-    }
-
-
-
-
-
-    .card{
-
-
-        width:90%;
-
-
-        padding:25px;
-
-
-        border-radius:30px;
-
-
-    }
-
-
-
-
-
-
-    h1{
-
-        font-size:38px;
-
-        line-height:1.1;
-
-    }
-
-
-
-    h2{
-
-        font-size:28px;
-
-    }
-
-
-
-
-    p{
-
-        font-size:19px;
-
-        line-height:1.4;
-
-    }
-
-
-
-
-
-    button{
-
-        width:100%;
-
-        font-size:20px;
-
-        padding:12px;
-
-    }
-
-
-
-
-
-
-    input,
-    textarea{
-
-
-        font-size:18px;
-
-
-        padding:12px;
-
-
-    }
-
-
-
-
-
-
-
-    /* SMALL POKEMON */
-
-    .pokemon{
-
-
-        width:65px;
-
-
-    }
-
-
-
-
-    .gengar{
-
-        left:-5px;
-
-        bottom:10px;
-
-    }
-
-
-
-
-    .espeon{
-
-        right:-5px;
-
-        bottom:40px;
-
-    }
-
-
-
-
-
-    .clefairy{
-
-        right:0;
-
-        top:10px;
-
-    }
-
-
-
-
-    .skitty{
-
-        left:0;
-
-        top:20px;
-
-    }
-
-
-
-
-    .mew{
-
-        width:50px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* EXTRA SMALL IPHONES */
-
-@media (max-width:390px){
-
-
-    .pokemon{
-
-        width:50px;
-
-    }
-
-
-
-    .card{
-
-        padding:20px;
-
-    }
-
-
-
-    h1{
-
-        font-size:32px;
-
-    }
-
-
-
-}
-
-/* POKEMON RESPONSIVE SIZE */
-
-.pokemon{
-    position:absolute;
-    width:150px;
-    z-index:2;
-}
-
-
-/* COMPUTER */
-
-@media (min-width:900px){
-
-    .pokemon{
-        width:220px;
-    }
-
-
-    .card{
-        max-width:750px;
-    }
-
-}
-
-
-/* PHONE */
-
-@media (max-width:600px){
-
-    body{
-        overflow-y:auto;
-    }
-
-
-    .pokemon{
-        width:70px;
-    }
-
-
-    .card{
-        width:90%;
-        padding:25px;
-    }
-
-
-    h1{
-        font-size:38px;
-    }
-
-
-    p{
-        font-size:20px;
-    }
-
-
-    button{
-        width:100%;
-    }
 
 }

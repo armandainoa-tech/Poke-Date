@@ -7,251 +7,94 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Adventure Updates ♡</title>
-
-
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 
 
 <style>
 
-
-*{
-box-sizing:border-box;
-}
-
-
-
 body{
 
-margin:0;
+font-family:Arial,sans-serif;
 
-min-height:100vh;
+text-align:center;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-family:"Patrick Hand",cursive;
-
+padding:40px;
 
 background:
-
 linear-gradient(
-160deg,
-#ffd6ea,
-#e7d5ff,
-#c6a5ff
+135deg,
+#ffd6ed,
+#d9c8ff
 );
 
-
-overflow:hidden;
-
 }
-
-
-
-
-
 
 
 .card{
 
+background:white;
 
-width:90%;
+padding:35px;
 
-max-width:650px;
+border-radius:30px;
 
-padding:45px;
+max-width:600px;
 
-
-background:
-
-rgba(255,255,255,.92);
-
-
-
-border-radius:45px;
-
-
+margin:auto;
 
 box-shadow:
-
-0 30px 80px rgba(120,70,180,.35);
-
-
-
-text-align:center;
-
-
-position:relative;
-
-z-index:5;
-
+0 10px 30px rgba(0,0,0,.15);
 
 }
-
-
-
-
 
 
 h1{
 
-
-font-family:"Caveat",cursive;
-
-
-font-size:55px;
-
-
-color:#6b3fa0;
-
+color:#a05cff;
 
 }
-
-
 
 
 #status{
 
+font-size:20px;
 
-font-size:25px;
+line-height:1.8;
 
-
-color:#6b3fa0;
-
-
-line-height:1.6;
-
+color:#5b4268;
 
 }
 
 
+img{
 
+width:100px;
 
-
-
-.pokemon{
-
-
-position:absolute;
-
-
-width:160px;
-
-
-animation:float 4s infinite;
-
+margin:10px;
 
 }
-
-
-
-.gengar{
-
-
-bottom:20px;
-
-
-left:20px;
-
-
-}
-
-
-
-.mew{
-
-
-top:20px;
-
-
-right:30px;
-
-
-width:120px;
-
-
-}
-
-
-
-
-
-
-
-@keyframes float{
-
-
-0%{
-
-transform:translateY(0);
-
-}
-
-
-
-50%{
-
-transform:translateY(-15px);
-
-}
-
-
-
-100%{
-
-transform:translateY(0);
-
-}
-
-
-}
-
 
 
 </style>
 
+
 </head>
-
-
-
-
 
 
 
 <body>
 
 
-
-<img 
-class="pokemon gengar"
-src="IMG_2059.png">
-
-
-
-<img 
-class="pokemon mew"
-src="IMG_2063.png">
-
-
-
-
-
-
-
 <div class="card">
 
 
 <h1>
-
-🌸 Adventure Updates ♡
-
+💜 Adventure Updates ♡
 </h1>
 
+
+<img src="IMG_2059.png">
 
 
 <div id="status">
@@ -261,11 +104,7 @@ Waiting for adventure...
 </div>
 
 
-
 </div>
-
-
-
 
 
 
@@ -275,7 +114,8 @@ Waiting for adventure...
 <script type="module">
 
 
-import { initializeApp } 
+import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 
@@ -298,27 +138,31 @@ from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
 
-
 const firebaseConfig = {
 
 
-apiKey: "AIzaSyBBzTwMmhD1t-gZeX5W35K1aG2okrUo91o",
+apiKey:
+"AIzaSyBBzTwMmhD1t-gZeX5W35K1aG2okrUo91o",
 
 
-authDomain: "date-site-bfb53.firebaseapp.com",
+authDomain:
+"date-site-bfb53.firebaseapp.com",
 
 
-projectId: "date-site-bfb53",
+projectId:
+"date-site-bfb53",
 
 
-storageBucket: "date-site-bfb53.firebasestorage.app",
+storageBucket:
+"date-site-bfb53.firebasestorage.app",
 
 
-messagingSenderId: "305849379339",
+messagingSenderId:
+"305849379339",
 
 
-appId: "1:305849379339:web:ded141e65eae95ec31f50e"
-
+appId:
+"1:305849379339:web:ded141e65eae95ec31f50e"
 
 };
 
@@ -327,12 +171,13 @@ appId: "1:305849379339:web:ded141e65eae95ec31f50e"
 
 
 
+const app =
+initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
 
 
-const db = getFirestore(app);
-
+const db =
+getFirestore(app);
 
 
 
@@ -340,9 +185,7 @@ const db = getFirestore(app);
 
 
 const status =
-
 document.getElementById("status");
-
 
 
 
@@ -352,7 +195,12 @@ document.getElementById("status");
 
 onSnapshot(
 
-doc(db,"adventures","latest"),
+doc(
+db,
+"adventures",
+"latest"
+),
+
 
 (snapshot)=>{
 
@@ -361,25 +209,18 @@ doc(db,"adventures","latest"),
 if(snapshot.exists()){
 
 
-
-const data = snapshot.data();
-
-
+const data =
+snapshot.data();
 
 
 
-status.innerHTML =
-
-`
 
 
-💜 HE SAID YES!! 🌸
+status.innerHTML = `
 
 
-<br><br>
 
-
-${data.message || ""}
+💗 <b>${data.message || "Adventure Accepted ♡"}</b>
 
 
 
@@ -389,7 +230,7 @@ ${data.message || ""}
 
 📅 <b>Date:</b><br>
 
-${data.date || "Not saved"}
+${data.date || "Not chosen"}
 
 
 
@@ -397,9 +238,9 @@ ${data.date || "Not saved"}
 
 
 
-🕒 <b>Time:</b><br>
+⏰ <b>Time:</b><br>
 
-${data.time || "Not saved"}
+${data.time || "Not chosen"}
 
 
 
@@ -409,7 +250,7 @@ ${data.time || "Not saved"}
 
 📍 <b>Location:</b><br>
 
-${data.location || "Not saved"}
+${data.location || "Not chosen"}
 
 
 
@@ -417,9 +258,9 @@ ${data.location || "Not saved"}
 
 
 
-👗 <b>Dress Code:</b><br>
+👗 <b>Dress:</b><br>
 
-${data.dressCode || "Not saved"}
+${data.dressCode || "Cute outfit ♡"}
 
 
 
@@ -429,7 +270,7 @@ ${data.dressCode || "Not saved"}
 
 🎒 <b>Bring:</b><br>
 
-${data.bring || "Not saved"}
+${data.bring || "Just yourself 💜"}
 
 
 
@@ -439,7 +280,8 @@ ${data.bring || "Not saved"}
 
 🌸 <b>Plans:</b><br>
 
-${data.plans || "Not saved"}
+${data.plans || "Adventure waiting..."}
+
 
 
 `;
@@ -449,16 +291,13 @@ ${data.plans || "Not saved"}
 }
 
 
+
 }
 
 );
 
 
-
-
-
 </script>
-
 
 
 
