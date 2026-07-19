@@ -1051,3 +1051,64 @@ button{
 
 
 }
+
+/* POKEMON RESPONSIVE SIZE */
+
+.pokemon{
+    position:absolute;
+    width:150px;
+    z-index:2;
+}
+
+
+/* COMPUTER */
+
+@media (min-width:900px){
+
+    .pokemon{
+        width:220px;
+    }
+
+
+    .card{
+        max-width:750px;
+    }
+
+}
+
+
+/* PHONE */
+
+@media (max-width:600px){
+
+    body{
+        overflow-y:auto;
+    }
+
+
+    .pokemon{
+        width:70px;
+    }
+
+
+    .card{
+        width:90%;
+        padding:25px;
+    }
+
+
+    h1{
+        font-size:38px;
+    }
+
+
+    p{
+        font-size:20px;
+    }
+
+
+    button{
+        width:100%;
+    }
+
+}
