@@ -307,98 +307,60 @@ document
 
 window.downloadCalendar = function(){
 
+    if(!chosenDate || !chosenTime){
+
+        alert("Choose date and time first ♡");
+        return;
+
+    }
 
 
-if(!chosenDate || !chosenTime){
+    const start = new Date(
+        chosenDate + "T" + chosenTime
+    );
 
 
-alert(
-"Choose date and time first ♡"
-);
+    const end = new Date(start);
+
+    end.setHours(
+        end.getHours() + 1
+    );
 
 
-return;
+    function formatDate(date){
 
+        return date
+        .toISOString()
+        .replace(/[-:]/g,"")
+        .split(".")[0] + "Z";
 
-}
-
-
-
-
-
-
-const start = new Date(
-
-chosenDate +
-"T" +
-chosenTime
-
-);
-
-
-
-
-const end = new Date(start);
-
-
-end.setHours(
-end.getHours()+1
-);
+    }
 
 
 
+    const calendarURL =
+    "data:text/calendar;charset=utf8," +
 
-
-
-
-function formatDate(date){
-
-
-return date
-.toISOString()
-.replace(/[-:]/g,"")
-.split(".")[0]+"Z";
-
-
-}
-
-
-
-
-
-
-
-const ics =
+    encodeURIComponent(
 
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Our Little Adventure//EN
 BEGIN:VEVENT
-UID:${Date.now()}@datesite
-DTSTAMP:${formatDate(new Date())}
+SUMMARY:💜 Our Little Adventure ♡
 DTSTART:${formatDate(start)}
 DTEND:${formatDate(end)}
-SUMMARY:Our Little Adventure ♡
 LOCATION:${chosenLocation}
 DESCRIPTION:${chosenPlans}
 END:VEVENT
-END:VCALENDAR`;
+END:VCALENDAR`
+
+    );
 
 
 
+    window.open(calendarURL);
 
-
-
-
-const blob = new Blob(
-
-[ics],
-
-{
-type:"text/calendar"
-}
-
-);
+};
 
 
 
