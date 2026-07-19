@@ -25,7 +25,6 @@
 <div class="scene">
 
 
-
 <!-- POKEMON -->
 
 <img class="pokemon gengar" src="IMG_2059.png">
@@ -50,11 +49,9 @@
 <div class="card intro-card">
 
 
-
 <h1>
 ✨ A wild adventure appeared... ✨
 </h1>
-
 
 
 <p>
@@ -65,7 +62,6 @@ A special date has been discovered 💜
 <p>
 A little memory waiting for us ♡
 </p>
-
 
 
 
@@ -105,7 +101,6 @@ A little memory waiting for us ♡
 <p>
 Tell me all the details ♡
 </p>
-
 
 
 
@@ -255,7 +250,6 @@ Our Little Adventure ♡
 <div class="card final-card">
 
 
-
 <h1>
 ✨ Adventure Accepted ✨
 </h1>
@@ -263,20 +257,12 @@ Our Little Adventure ♡
 
 
 <p>
-
 Can’t wait to see you 💜
-
 </p>
 
 
 
-<img 
-class="pokemon mew"
-src="IMG_2063.png">
-
-
-
-<div>
+<div class="pokemon-ending">
 
 👻 💜 🌸 ✨
 
@@ -307,7 +293,6 @@ src="IMG_2063.png">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 
-
 <script>
 
 emailjs.init({
@@ -326,27 +311,21 @@ publicKey:
 
 
 
-<!-- FIREBASE -->
+<!-- FIREBASE + MAIN SCRIPT -->
 
 <script type="module">
 
-import { saveAdventure }
-from "./firebase.js";
+import { saveAdventure } from "./firebase.js";
 
 
-window.saveAdventure =
-saveAdventure;
+window.saveAdventure = saveAdventure;
+
+
+import "./script.js";
 
 
 </script>
 
-
-
-
-
-
-
-<script src="script.js"></script>
 
 
 
